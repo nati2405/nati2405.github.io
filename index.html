@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nathan Bezabeh — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-anim" aria-hidden></div>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">NB</div>
+        <div>
+          <h1>Nathan Bezabeh</h1>
+          <div class="meta">Computer Science • AI & Full‑Stack • Virginia Tech</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="panel intro">
+        <h2>Hi — I’m Nathan. I build AI-driven tools, simulations, and web apps.</h2>
+        <p class="lead">I’m a Computer Science student at Virginia Tech focused on applying machine learning, modeling, and full‑stack development to deliver research-backed and production-ready solutions. I work across Python, React/Next.js, and data workflows for reproducible experimentation.</p>
+
+        <div class="skills">
+          <div class="pill">Python</div>
+          <div class="pill">React / Next.js</div>
+          <div class="pill">Machine Learning</div>
+          <div class="pill">Data Modeling</div>
+          <div class="pill">R / RStudio</div>
+          <div class="pill">SQL</div>
+        </div>
+
+        <div id="projects" class="projects-section">
+          <h3>Selected Projects</h3>
+          <div class="projects">
+            <a class="proj" href="#" onclick="openModal(event,0)">
+              <div class="dot" style="background:#4fd1c5"></div>
+              <div>
+                <strong>Student Debt Modeling & Simulation</strong>
+                <div class="small">Python simulations modeling multi-stage dynamics of student debt; designed reproducible Colab workflows.</div>
+              </div>
+            </a>
+
+            <a class="proj" href="#" onclick="openModal(event,1)">
+              <div class="dot" style="background:#6b8cff"></div>
+              <div>
+                <strong>Computational Biology Predictive Modeling</strong>
+                <div class="small">Random forest models in R improving homology prediction and analysis reproducibility.</div>
+              </div>
+            </a>
+
+            <a class="proj" href="#" onclick="openModal(event,2)">
+              <div class="dot" style="background:#ffb86b"></div>
+              <div>
+                <strong>AI Chatbot & Inventory Management</strong>
+                <div class="small">Full‑stack AI apps including a Rasa chatbot and Next.js inventory system.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel side-card">
+        <div class="profile-box">
+          <div class="avatar">NB</div>
+          <div>
+            <div class="name">Nathan Bezabeh</div>
+            <div class="small">B.S. Computer Science — Virginia Tech (2027)</div>
+          </div>
+        </div>
+
+        <ul class="exp-list">
+          <li>Student debt simulation research (Python, Colab)</li>
+          <li>AI Fellow — Rasa & React/Next.js</li>
+          <li>Computational biology — Random Forests in R</li>
+        </ul>
+
+        <a class="btn" href="Bezabeh_N1.pdf" target="_blank">Download Resume</a>
+
+        <div class="contact-mini">
+          <div>Email: <a href="mailto:nathanbezabeh@gmail.com">nathanbezabeh@gmail.com</a></div>
+          <div>Phone: (571)-866-3741</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="panel" id="about">
+      <h3>About</h3>
+      <p>I’m Nathan Bezabeh, a Computer Science student at Virginia Tech with a strong foundation in AI, full-stack development, and data-driven problem solving. I’ve worked on machine learning research, computational biology, and real-world software projects that combine modeling, simulation, and modern web technologies. My experience ranges from building Python-based policy simulations and predictive ML models to developing full-stack applications with React, Next.js, and Rasa.</p>
+
+      <div class="grid-2">
+        <div class="panel sub">
+          <h4>Skills & Tools</h4>
+          <p class="small">Python · Java · C++ · JavaScript · TypeScript · SQL · HTML/CSS · R<br>React · Next.js · Firebase · Rasa · Git/GitHub · RStudio · Colab</p>
+        </div>
+
+        <div class="panel sub">
+          <h4>Experience</h4>
+          <p class="small">HeadStarter AI • Computational Biology Researcher • SURE‑C² Research Intern • CVS Pharmacy Technician</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="contact">
+      <h3>Contact</h3>
+      <p class="small">Interested in collaborating or discussing opportunities? Reach out.</p>
+      <div class="contact-buttons">
+        <a class="btn" href="mailto:nathanbezabeh@gmail.com">Email</a>
+        <a class="btn" href="https://github.com/yourusername" target="_blank">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/nat25et21" target="_blank">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>
+      Built with hate • © Nathan Bezabeh • 2025
+    </footer>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button onclick="closeModal()" class="close-btn">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
