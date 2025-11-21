@@ -69,3 +69,24 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
   });
 });
+
+// ================================
+// HIDE NAVBAR ON SCROLL DOWN
+// SHOW NAVBAR ON SCROLL UP
+// ================================
+let lastScroll = 0;
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    // scrolling down — hide navbar
+    header.classList.add('hide');
+  } else {
+    // scrolling up — show navbar
+    header.classList.remove('hide');
+  }
+
+  lastScroll = currentScroll;
+});
