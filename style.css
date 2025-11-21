@@ -8,7 +8,23 @@
 body {
     font-family: 'Segoe UI', sans-serif;
     color: #e6edf3;
-    background: #0b0f17 url("background.png") no-repeat center/cover fixed;
+
+    /* Background fix */
+    background-color: #0b0f17;
+    background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* iPhone/iPad background zoom fix */
+@media screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
+    }
 }
 
 /* HEADER ---------------------------------------- */
@@ -23,6 +39,15 @@ body {
     z-index: 1000;
     background: rgba(11, 15, 23, 0.7);
     backdrop-filter: blur(10px);
+
+    /* Navbar fade animation */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.header.hide {
+    opacity: 0;
+    transform: translateY(-40px);
+    pointer-events: none;
 }
 
 .logo-box {
@@ -70,7 +95,7 @@ body {
 
 /* HERO ------------------------------------------ */
 .hero {
-    padding-top: 160px;  /* fixes Education showing */
+    padding-top: 160px;
     padding-bottom: 100px;
     display: flex;
     justify-content: space-between;
@@ -325,58 +350,42 @@ footer {
     font-size: 16px;
     color: #7e8da0;
 }
+
 /* =========================================
-   RESPONSIVE DESIGN — MOBILE & TABLETS
+   RESPONSIVE FIXES — PHONE + TABLET
    ========================================= */
 
-/* Medium screens (tablets) */
-@media (max-width: 992px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-    }
+/* Phones only (portrait) */
+@media screen and (max-width: 768px) and (orientation: portrait) {
 
-    .hero-left {
-        width: 100%;
-    }
-
-    .hero-right .hero-img {
-        width: 280px;
-    }
-
-    .skills-grid {
-        flex-direction: column;
-    }
-}
-
-/* Phones */
-@media (max-width: 768px) {
-
-    /* NAVBAR */
+    /* Navbar layout fix */
     .header {
-        padding: 15px 25px;
+        padding: 12px 20px;
         flex-direction: column;
-        gap: 15px;
-        transition: opacity 0.4s ease, transform 0.4s ease;
+        align-items: center;
+        height: auto;
     }
 
-    .header.hide {
-        opacity: 0;
-        transform: translateY(-40px);
-        pointer-events: none;
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
     }
-    
+
     .navbar a {
-        margin-left: 12px;
         font-size: 14px;
+        margin: 0;
     }
 
     .contact-btn {
         padding: 8px 16px;
     }
 
-    /* HERO SECTION */
+    /* Hero */
     .hero {
         flex-direction: column;
         text-align: center;
@@ -401,7 +410,7 @@ footer {
         width: 240px;
     }
 
-    /* EDUCATION */
+    /* Education */
     .edu-card {
         flex-direction: column;
         text-align: center;
@@ -411,7 +420,7 @@ footer {
         width: 60px;
     }
 
-    /* CERTIFICATIONS */
+    /* Certifications */
     .cert-grid {
         grid-template-columns: 1fr;
     }
@@ -421,7 +430,7 @@ footer {
         text-align: center;
     }
 
-    /* EXPERIENCE */
+    /* Experience */
     .exp-grid {
         grid-template-columns: 1fr;
     }
@@ -431,7 +440,7 @@ footer {
         text-align: center;
     }
 
-    /* PROJECTS */
+    /* Projects */
     .project-large-card {
         flex-direction: column;
         text-align: center;
@@ -441,7 +450,7 @@ footer {
         width: 250px;
     }
 
-    /* SKILLS SECTION */
+    /* Skills */
     .skills-grid {
         flex-direction: column;
     }
@@ -450,7 +459,7 @@ footer {
         width: 100%;
     }
 
-    /* CONTACT SECTION */
+    /* Contact */
     .contact-container {
         flex-direction: column;
         text-align: center;
@@ -464,14 +473,13 @@ footer {
         font-size: 18px;
     }
 
-    /* SECTION TITLES */
     .section-title {
         font-size: 32px;
         text-align: center;
     }
 }
 
-/* Ultra small devices */
+/* Extra small screens */
 @media (max-width: 480px) {
     .hero-left h1 {
         font-size: 34px;
