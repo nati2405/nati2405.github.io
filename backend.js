@@ -5,31 +5,32 @@ const projects = [
   {
     title: 'Student Debt Modeling & Simulation',
     content: `
-      <p><strong>Context:</strong> Research internship developing Python simulations to study long-term policy impacts on student debt.</p>
-      <p><strong>Highlights:</strong> Designed reproducible Google Colab workflows, applied discrete math & advanced calculus, and presented findings at NSF-supported forums and the BEER Conference.</p>
+      <p><strong>Context:</strong> Research internship building Python-based simulations to model long-term effects of student loan policy systems.</p>
+      <p><strong>Highlights:</strong> Designed reproducible Google Colab workflows, applied discrete math & calculus modeling, and presented results at NSF-supported research forums.</p>
     `
   },
+
   {
     title: 'Computational Biology Predictive Modeling',
     content: `
-      <p><strong>Context:</strong> Computational Biology research building predictive Random Forest models in R.</p>
-      <p><strong>Highlights:</strong> Improved homology prediction accuracy, optimized RStudio + Colab workflows, and contributed analyses supporting ongoing biology research.</p>
+      <p><strong>Context:</strong> Contributed to the CURE-2025 Computational Biology project focusing on homology prediction.</p>
+      <p><strong>Highlights:</strong> Built Random Forest models in R, improved prediction performance, and optimized analysis workflows in RStudio + Colab.</p>
     `
   },
+
   {
     title: 'AI Chatbot & Inventory Management System',
     content: `
-      <p><strong>Context:</strong> HeadStarter AI fellowship project integrating machine learning with full‑stack web development.</p>
-      <p><strong>Highlights:</strong> Built a Rasa-based conversational chatbot and a React/Next.js inventory system that automates updates and enhances usability.</p>
+      <p><strong>Context:</strong> Full-stack application built during the Headstarter AI Fellowship.</p>
+      <p><strong>Highlights:</strong> Created a Rasa-powered conversational chatbot, automated product tracking, and built a full inventory dashboard using React/Next.js.</p>
     `
   }
 ];
 
 // ================================
-// MODAL HANDLING
+// OPEN MODAL
 // ================================
-function openModal(e, index) {
-  e.preventDefault();
+function openModal(index) {
   const modal = document.getElementById('modal');
   const modalBody = document.getElementById('modal-body');
 
@@ -41,21 +42,26 @@ function openModal(e, index) {
   modal.style.display = 'flex';
 }
 
+// ================================
+// CLOSE MODAL
+// ================================
 function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
-// Close modal on background click
-window.addEventListener('click', (e) => {
+// Close modal when clicking outside box
+window.addEventListener('click', function (e) {
   const modal = document.getElementById('modal');
-  if (e.target === modal) closeModal();
+  if (e.target === modal) {
+    closeModal();
+  }
 });
 
 // ================================
-// SMOOTH SCROLLING FOR NAV LINKS
+// SMOOTH SCROLL FOR NAV LINKS
 // ================================
 document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(e) {
+  link.addEventListener('click', function (e) {
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       e.preventDefault();

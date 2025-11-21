@@ -1,136 +1,286 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Nathan Bezabeh — Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nathan Bezabeh — Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div class="bg-anim" aria-hidden></div>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">NB</div>
-        <div>
-          <h1>Nathan Bezabeh</h1>
-          <div class="meta">Computer Science • AI & Full‑Stack • Virginia Tech</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="cta">Contact</a>
-      </nav>
-    </header>
 
-    <section class="hero">
-      <div class="panel intro">
-        <h2>Hi — I’m Nathan. I build AI-driven tools, simulations, and web apps.</h2>
-        <p class="lead">I’m a Computer Science student at Virginia Tech focused on applying machine learning, modeling, and full‑stack development to deliver research-backed and production-ready solutions. I work across Python, React/Next.js, and data workflows for reproducible experimentation.</p>
-
-        <div class="skills">
-          <div class="pill">Python</div>
-          <div class="pill">React / Next.js</div>
-          <div class="pill">Machine Learning</div>
-          <div class="pill">Data Modeling</div>
-          <div class="pill">R / RStudio</div>
-          <div class="pill">SQL</div>
-        </div>
-
-        <div id="projects" class="projects-section">
-          <h3>Selected Projects</h3>
-          <div class="projects">
-            <a class="proj" href="#" onclick="openModal(event,0)">
-              <div class="dot" style="background:#4fd1c5"></div>
-              <div>
-                <strong>Student Debt Modeling & Simulation</strong>
-                <div class="small">Python simulations modeling multi-stage dynamics of student debt; designed reproducible Colab workflows.</div>
-              </div>
-            </a>
-
-            <a class="proj" href="#" onclick="openModal(event,1)">
-              <div class="dot" style="background:#6b8cff"></div>
-              <div>
-                <strong>Computational Biology Predictive Modeling</strong>
-                <div class="small">Random forest models in R improving homology prediction and analysis reproducibility.</div>
-              </div>
-            </a>
-
-            <a class="proj" href="#" onclick="openModal(event,2)">
-              <div class="dot" style="background:#ffb86b"></div>
-              <div>
-                <strong>AI Chatbot & Inventory Management</strong>
-                <div class="small">Full‑stack AI apps including a Rasa chatbot and Next.js inventory system.</div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <aside class="panel side-card">
-        <div class="profile-box">
-          <div class="avatar">NB</div>
-          <div>
-            <div class="name">Nathan Bezabeh</div>
-            <div class="small">B.S. Computer Science — Virginia Tech (2027)</div>
-          </div>
-        </div>
-
-        <ul class="exp-list">
-          <li>Student debt simulation research (Python, Colab)</li>
-          <li>AI Fellow — Rasa & React/Next.js</li>
-          <li>Computational biology — Random Forests in R</li>
-        </ul>
-
-        <a class="btn" href="Bezabeh_N1.pdf" target="_blank">Download Resume</a>
-
-        <div class="contact-mini">
-          <div>Email: <a href="mailto:nathanbezabeh@gmail.com">nathanbezabeh@gmail.com</a></div>
-          <div>Phone: (571)-866-3741</div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="panel" id="about">
-      <h3>About</h3>
-      <p>I’m Nathan Bezabeh, a Computer Science student at Virginia Tech with a strong foundation in AI, full-stack development, and data-driven problem solving. I’ve worked on machine learning research, computational biology, and real-world software projects that combine modeling, simulation, and modern web technologies. My experience ranges from building Python-based policy simulations and predictive ML models to developing full-stack applications with React, Next.js, and Rasa.</p>
-
-      <div class="grid-2">
-        <div class="panel sub">
-          <h4>Skills & Tools</h4>
-          <p class="small">Python · Java · C++ · JavaScript · TypeScript · SQL · HTML/CSS · R<br>React · Next.js · Firebase · Rasa · Git/GitHub · RStudio · Colab</p>
-        </div>
-
-        <div class="panel sub">
-          <h4>Experience</h4>
-          <p class="small">HeadStarter AI • Computational Biology Researcher • SURE‑C² Research Intern • CVS Pharmacy Technician</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" id="contact">
-      <h3>Contact</h3>
-      <p class="small">Interested in collaborating or discussing opportunities? Reach out.</p>
-      <div class="contact-buttons">
-        <a class="btn" href="mailto:nathanbezabeh@gmail.com">Email</a>
-        <a class="btn" href="https://github.com/yourusername" target="_blank">GitHub</a>
-        <a class="btn" href="https://linkedin.com/in/nat25et21" target="_blank">LinkedIn</a>
-      </div>
-    </section>
-
-    <footer>
-      Built with hate • © Nathan Bezabeh • 2025
-    </footer>
-  </div>
-
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <button onclick="closeModal()" class="close-btn">✕</button>
-      <div id="modal-body"></div>
+<!-- HEADER / NAVBAR -->
+<header class="header">
+    <div class="logo-box">
+        <div class="logo-circle">NB</div>
+        <span class="logo-text">Nathan Bezabeh</span>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <nav class="navbar">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="contact-btn">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section id="about" class="hero">
+    <div class="hero-left">
+        <h1>Hi, I'm <span class="highlight">Nathan Bezabeh</span></h1>
+
+        <h3>AI • Software Engineering • Full-Stack Development</h3>
+
+        <p>
+            I build AI-powered tools, predictive models, and full-stack interfaces.
+            Computer Science @ Virginia Tech • Simulation • Machine Learning • Web Dev
+        </p>
+
+        <a href="Bezabeh_N1.pdf" class="resume-btn" download>Download Resume</a>
+    </div>
+
+    <div class="hero-right">
+        <img src="emailpass.jpg" class="hero-img" alt="Nathan Bezabeh">
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section pushed-down">
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-grid">
+
+        <div class="edu-card">
+            <img src="vt.png" class="edu-logo">
+            <div>
+                <h3>Virginia Tech</h3>
+                <p>B.S. Computer Science — AI Focus</p>
+                <p>Research, simulation modeling, software engineering.</p>
+            </div>
+        </div>
+
+        <div class="edu-card">
+            <img src="nova.png" class="edu-logo">
+            <div>
+                <h3>Northern Virginia Community College</h3>
+                <p>A.S. Computer Science & Engineering</p>
+                <p>STEM-focused institution with hands-on research opportunities.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section">
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="cert-grid">
+
+        <div class="cert-card">
+            <img src="oracle.png" class="cert-logo">
+            <div>
+                <h3>Oracle Java Certification</h3>
+                <p>Demonstrated Java proficiency in OOP.</p>
+            </div>
+        </div>
+
+        <div class="cert-card">
+            <img src="codepath.png" class="cert-logo">
+            <div>
+                <h3>CodePath Certification</h3>
+                <p>Technical interview prep + problem solving.</p>
+            </div>
+        </div>
+
+        <div class="cert-card">
+            <img src="headstarter.png" class="cert-logo">
+            <div>
+                <h3>Headstarter AI Fellowship</h3>
+                <p>Full-stack + AI development training.</p>
+            </div>
+        </div>
+
+        <div class="cert-card">
+            <img src="oracle.png" class="cert-logo">
+            <div>
+                <h3>EmailPass Cybersecurity</h3>
+                <p>Cybersecurity fundamentals & prevention.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="exp-grid">
+
+        <div class="exp-card">
+            <img src="cvs.png" class="exp-logo">
+            <div>
+                <h3>CVS Pharmacy Technician</h3>
+                <p>Healthcare operations & patient support.</p>
+            </div>
+        </div>
+
+        <div class="exp-card">
+            <img src="cure.png" class="exp-logo">
+            <div>
+                <h3>CURE Program — GMU/NSF</h3>
+                <p>Computational biology modeling & genetic analysis research.</p>
+            </div>
+        </div>
+
+        <div class="exp-card">
+            <img src="headstarter.png" class="exp-logo">
+            <div>
+                <h3>AI Fellowship Developer</h3>
+                <p>AI chatbot & inventory automation systems.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="project-large-card">
+        <img src="student_debt.png" class="proj-image">
+
+        <div class="proj-info">
+            <h3>Modeling Student Debt Dynamics</h3>
+            <p>
+                A long-term simulation that analyzes how federal loans evolve
+                across multiple lifecycle stages. Used SEIR-inspired modeling,
+                policy forecasting, and system dynamics to identify behavioral
+                trends in repayment, delinquency, and forgiveness outcomes.
+            </p>
+            <p>
+                Built using Python, NumPy, Matplotlib, and Jupyter for
+                simulation visualization. Presented at the NSF-funded STEM
+                Research Symposium.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-grid">
+
+        <div class="skills-col">
+            <h3>Technical Skills</h3>
+
+            <div class="skill">
+                <span>Python</span>
+                <div class="bar"><div style="width: 90%"></div></div>
+                <p class="percent">90%</p>
+            </div>
+
+            <div class="skill">
+                <span>React</span>
+                <div class="bar"><div style="width: 82%"></div></div>
+                <p class="percent">82%</p>
+            </div>
+
+            <div class="skill">
+                <span>C++</span>
+                <div class="bar"><div style="width: 75%"></div></div>
+                <p class="percent">75%</p>
+            </div>
+
+            <div class="skill">
+                <span>JavaScript</span>
+                <div class="bar"><div style="width: 88%"></div></div>
+                <p class="percent">88%</p>
+            </div>
+
+            <div class="skill">
+                <span>TypeScript</span>
+                <div class="bar"><div style="width: 80%"></div></div>
+                <p class="percent">80%</p>
+            </div>
+
+            <div class="skill">
+                <span>SQL</span>
+                <div class="bar"><div style="width: 84%"></div></div>
+                <p class="percent">84%</p>
+            </div>
+        </div>
+
+        <div class="skills-col">
+            <h3>Professional Skills</h3>
+
+            <div class="skill">
+                <span>Communication</span>
+                <div class="bar"><div style="width: 90%"></div></div>
+                <p class="percent">90%</p>
+            </div>
+
+            <div class="skill">
+                <span>Teamwork</span>
+                <div class="bar"><div style="width: 92%"></div></div>
+                <p class="percent">92%</p>
+            </div>
+
+            <div class="skill">
+                <span>Leadership</span>
+                <div class="bar"><div style="width: 85%"></div></div>
+                <p class="percent">85%</p>
+            </div>
+
+            <div class="skill">
+                <span>Adaptability</span>
+                <div class="bar"><div style="width: 88%"></div></div>
+                <p class="percent">88%</p>
+            </div>
+
+            <div class="skill">
+                <span>Curiosity</span>
+                <div class="bar"><div style="width: 93%"></div></div>
+                <p class="percent">93%</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact-container">
+
+        <img src="emailpass.jpg" class="contact-photo">
+
+        <div class="contact-info">
+            <h3>Let's Connect</h3>
+
+            <ul>
+                <li><a href="mailto:nathanbezabeh@gmail.com">📧 Email: nathanbezabeh@gmail.com</a></li>
+                <li><a href="tel:7035555555">📞 Phone: (703) 555-5555</a></li>
+                <li><a href="https://www.linkedin.com/in/nathanbezabeh" target="_blank">🔗 LinkedIn</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2025 Nathan Bezabeh — Built with passion
+</footer>
+
+<script src="backend.js"></script>
 </body>
 </html>
