@@ -8,7 +8,7 @@
 body {
     font-family: 'Segoe UI', sans-serif;
     color: #e6edf3;
-    background: #0b0f17 url("background.jpg") no-repeat center/cover fixed;
+    background: #0b0f17 url("background.png") no-repeat center/cover fixed;
 }
 
 /* HEADER ---------------------------------------- */
