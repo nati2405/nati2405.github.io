@@ -325,3 +325,156 @@ footer {
     font-size: 16px;
     color: #7e8da0;
 }
+/* =========================================
+   RESPONSIVE DESIGN — MOBILE & TABLETS
+   ========================================= */
+
+/* Medium screens (tablets) */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero-left {
+        width: 100%;
+    }
+
+    .hero-right .hero-img {
+        width: 280px;
+    }
+
+    .skills-grid {
+        flex-direction: column;
+    }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    .header {
+        padding: 15px 25px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar a {
+        margin-left: 12px;
+        font-size: 14px;
+    }
+
+    .contact-btn {
+        padding: 8px 16px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        width: 90%;
+        padding-top: 140px;
+    }
+
+    .hero-left h1 {
+        font-size: 42px;
+    }
+
+    .hero-left h3 {
+        font-size: 20px;
+    }
+
+    .hero-left p {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .hero-right .hero-img {
+        width: 240px;
+    }
+
+    /* EDUCATION */
+    .edu-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .edu-logo {
+        width: 60px;
+    }
+
+    /* CERTIFICATIONS */
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cert-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* EXPERIENCE */
+    .exp-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exp-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* PROJECTS */
+    .project-large-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .proj-image {
+        width: 250px;
+    }
+
+    /* SKILLS SECTION */
+    .skills-grid {
+        flex-direction: column;
+    }
+
+    .skills-col {
+        width: 100%;
+    }
+
+    /* CONTACT SECTION */
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-photo {
+        width: 200px;
+    }
+
+    .contact-info ul {
+        font-size: 18px;
+    }
+
+    /* SECTION TITLES */
+    .section-title {
+        font-size: 32px;
+        text-align: center;
+    }
+}
+
+/* Ultra small devices */
+@media (max-width: 480px) {
+    .hero-left h1 {
+        font-size: 34px;
+    }
+
+    .hero-left p {
+        font-size: 15px;
+    }
+
+    .navbar a {
+        font-size: 12px;
+    }
+}
