@@ -1,54 +1,55 @@
-/* =========================================
+/* =====================================================
    GLOBAL RESET
-========================================= */
+===================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* =========================================
-   BACKGROUND LAYER (NEW)
-   - TRUE full width & height
-   - Works on ALL devices
-   - No cropping / no zooming
-========================================= */
-.background-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+/* =====================================================
+   FULL BACKGROUND + SAFE AREA SUPPORT
+===================================================== */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 
-    background-image: url("background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    /* Prevent white bars on iPhone */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 
-    z-index: -1;
+    overflow-x: hidden;
+    overscroll-behavior: none;
 }
 
-/* iPhone / iPad FIX */
-@supports (-webkit-touch-callout: none) {
-    .background-layer {
-        background-attachment: scroll !important;
-        background-size: cover !important;
-        background-position: center !important;
-    }
-}
-
-/* =========================================
-   BASE BODY
-========================================= */
+/* GLOBAL BACKGROUND (entire page uses same image) */
 body {
     font-family: 'Segoe UI', sans-serif;
     color: #e6edf3;
-    overflow-x: hidden;
+
+    background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-size: cover;          /* FULL WIDTH + FULL HEIGHT */
+    background-position: center top;
+    background-attachment: fixed;    /* Desktop parallax-like feel */
 }
 
-/* =========================================
-   HEADER
-========================================= */
+/* Fix for iPhone/iPad to avoid zooming/cropping */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
+    }
+}
+
+/* =====================================================
+   HEADER / NAV
+===================================================== */
 .header {
     width: 100%;
     padding: 18px 60px;
@@ -116,20 +117,24 @@ body {
     font-weight: bold;
 }
 
-/* =========================================
-   HERO SECTION — TRUE CENTERING
-========================================= */
+/* =====================================================
+   HERO SECTION
+===================================================== */
 .hero {
     width: 85%;
     margin: auto;
-    min-height: 100vh;
+
+    min-height: 100vh;      /* PERFECT vertical center */
+    padding-top: 150px;
 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
 
-    padding-top: 120px; /* account for header */
+.hero-center {
+    width: 100%;
 }
 
 .hero-center h1 {
@@ -159,8 +164,8 @@ body {
     padding: 14px 35px;
     background: #2bc4ad;
     color: #0b0f17;
-    text-decoration: none;
     border-radius: 12px;
+    text-decoration: none;
     font-size: 18px;
     font-weight: bold;
     transition: 0.3s;
@@ -170,24 +175,26 @@ body {
     transform: scale(1.05);
 }
 
-/* =========================================
-   UNIVERSAL SECTIONS
-========================================= */
+/* =====================================================
+   SECTIONS
+===================================================== */
 .section {
     width: 85%;
     margin: 100px auto;
-    backdrop-filter: blur(4px);
 }
 
 .section-title {
     font-size: 40px;
     margin-bottom: 40px;
-    text-shadow: 0px 0px 5px #000;
 }
 
-/* =========================================
+.pushed-down {
+    padding-top: 80px;
+}
+
+/* =====================================================
    EDUCATION
-========================================= */
+===================================================== */
 .edu-grid {
     display: flex;
     flex-direction: column;
@@ -207,9 +214,9 @@ body {
     width: 70px;
 }
 
-/* =========================================
+/* =====================================================
    CERTIFICATIONS
-========================================= */
+===================================================== */
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -224,6 +231,7 @@ body {
     align-items: center;
     gap: 25px;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
 }
 
 .cert-card:hover {
@@ -235,9 +243,9 @@ body {
     border-radius: 10px;
 }
 
-/* =========================================
+/* =====================================================
    EXPERIENCE
-========================================= */
+===================================================== */
 .exp-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -261,9 +269,9 @@ body {
     width: 60px;
 }
 
-/* =========================================
+/* =====================================================
    PROJECTS
-========================================= */
+===================================================== */
 .project-large-card {
     background: rgba(10, 14, 22, 0.85);
     padding: 40px;
@@ -283,9 +291,9 @@ body {
     line-height: 1.45;
 }
 
-/* =========================================
+/* =====================================================
    SKILLS
-========================================= */
+===================================================== */
 .skills-grid {
     display: flex;
     justify-content: space-between;
@@ -314,15 +322,9 @@ body {
     background: linear-gradient(90deg, #2bc4ad, #1fa28b);
 }
 
-.percent {
-    margin-top: 6px;
-    font-size: 15px;
-    color: #9bb4c8;
-}
-
-/* =========================================
+/* =====================================================
    CONTACT
-========================================= */
+===================================================== */
 .contact-container {
     background: rgba(10, 14, 22, 0.85);
     padding: 40px;
@@ -348,15 +350,16 @@ body {
 
 .contact-info a {
     color: #2bc4ad;
+    text-decoration: none;
 }
 
 .contact-info a:hover {
     text-decoration: underline;
 }
 
-/* =========================================
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 footer {
     text-align: center;
     margin-top: 90px;
@@ -364,9 +367,9 @@ footer {
     color: #7e8da0;
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* =====================================================
+   RESPONSIVE FIXES
+===================================================== */
 @media (max-width: 768px) {
 
     .header {
@@ -376,25 +379,25 @@ footer {
         padding: 16px 20px;
         text-align: center;
     }
+
     .logo-box {
         justify-content: center;
         width: 100%;
     }
+
     .navbar {
         width: 100%;
-        display: flex;
         flex-wrap: wrap;
-        justify-content: center !important;  /* MAIN FIX */
+        justify-content: center !important;
         gap: 14px;
         margin-top: 12px;
-    }
-    .navbar a {
         text-align: center;
     }
 
     .hero {
         width: 90%;
         padding-top: 140px;
+        min-height: 100vh;
     }
 
     .hero-center h1 {
@@ -430,6 +433,11 @@ footer {
     .exp-grid {
         grid-template-columns: 1fr;
     }
+
+    .section-title {
+        text-align: center;
+        font-size: 32px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -438,11 +446,11 @@ footer {
         font-size: 34px;
     }
 
-    .hero-center p {
-        font-size: 15px;
-    }
-
     .navbar a {
         font-size: 12px;
+    }
+
+    .hero-center p {
+        font-size: 15px;
     }
 }
