@@ -1,5 +1,5 @@
 // ================================
-// PROJECT MODAL CONTENT
+// PROJECT DETAILS FOR MODAL
 // ================================
 const projects = [
   {
@@ -49,13 +49,16 @@ function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
+// Close modal when clicking outside box
 window.addEventListener('click', function (e) {
   const modal = document.getElementById('modal');
-  if (e.target === modal) closeModal();
+  if (e.target === modal) {
+    closeModal();
+  }
 });
 
 // ================================
-// SMOOTH SCROLL
+// SMOOTH SCROLL FOR NAV LINKS
 // ================================
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', function (e) {
@@ -68,26 +71,25 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ================================
-// NAVBAR HIDE ON SCROLL
+// NAVBAR HIDE/SHOW ON SCROLL
 // ================================
-let lastScroll = 0;
-const header = document.querySelector('.header');
+// Smooth & stable on all devices, including iPhone Safari
 
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll > lastScroll && currentScroll > 100) {
-    header.classList.add('hide');
-  } else {
-    header.classList.remove('hide');
+let lastScrollY = window.pageYOffset;
+const header = document.querySelector(".header");
+
+window.addEventListener("scroll", () => {
+  const currentY = window.pageYOffset;
+
+  // Scrolling down → hide navbar
+  if (currentY > lastScrollY && currentY > 80) {
+    header.classList.add("hide");
   }
-  lastScroll = currentScroll;
-});
+  // Scrolling up → show navbar
+  else {
+    header.classList.remove("hide");
+  }
 
-// ================================
-// FADE-IN ON LOAD
-// ================================
-window.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".fade-item").forEach(item => {
-        item.classList.add("active");
-    });
+  // Prevent negative scroll values on Safari
+  lastScrollY = currentY <= 0 ? 0 : currentY;
 });
