@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8" />
 
-    <!-- CRITICAL for full screen background on iPhone -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <!-- Required for full responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Nathan Bezabeh — Portfolio</title>
-
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- GLOBAL BACKGROUND LAYER -->
+<div class="background-layer"></div>
+
+<!-- HEADER / NAVBAR -->
 <header class="header">
     <div class="logo-box">
         <div class="logo-circle">NB</div>
@@ -43,7 +45,9 @@
             Computer Science @ Virginia Tech • Simulation • Machine Learning • Web Development.
         </p>
 
-        <a href="Bezabeh_N1.pdf" class="resume-btn" download>Download Resume</a>
+        <a href="Bezabeh_N1.pdf" class="resume-btn" download>
+            Download Resume
+        </a>
     </div>
 </section>
 
@@ -52,6 +56,7 @@
     <h2 class="section-title">Education</h2>
 
     <div class="edu-grid">
+
         <div class="edu-card">
             <img src="vt.png" class="edu-logo">
             <div>
@@ -69,6 +74,7 @@
                 <p>STEM-focused institution with hands-on research opportunities.</p>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -77,11 +83,12 @@
     <h2 class="section-title">Certifications</h2>
 
     <div class="cert-grid">
+
         <div class="cert-card">
             <img src="oracle.png" class="cert-logo">
             <div>
                 <h3>Oracle Data Science</h3>
-                <p>Data analysis, modeling, machine learning workflows.</p>
+                <p>Data analysis, modeling, and machine learning workflows using Oracle tools.</p>
             </div>
         </div>
 
@@ -89,7 +96,7 @@
             <img src="codepath.png" class="cert-logo">
             <div>
                 <h3>Intro to Cybersecurity</h3>
-                <p>Security principles, threats, and system protection.</p>
+                <p>Security principles, threats, and protection strategies.</p>
             </div>
         </div>
 
@@ -97,9 +104,10 @@
             <img src="oracle.png" class="cert-logo">
             <div>
                 <h3>Oracle AI Foundation</h3>
-                <p>Core AI concepts and practical knowledge.</p>
+                <p>AI fundamentals, concepts, and practical knowledge.</p>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -108,6 +116,7 @@
     <h2 class="section-title">Experience</h2>
 
     <div class="exp-grid">
+
         <div class="exp-card">
             <img src="cvs.png" class="exp-logo">
             <div>
@@ -120,7 +129,7 @@
             <img src="cure.png" class="exp-logo">
             <div>
                 <h3>CURE Program — GMU/NSF</h3>
-                <p>Computational biology modeling & genetic research.</p>
+                <p>Computational biology modeling & genetic analysis research.</p>
             </div>
         </div>
 
@@ -131,6 +140,7 @@
                 <p>AI chatbot & inventory automation systems.</p>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -140,10 +150,17 @@
 
     <div class="project-large-card">
         <img src="student_debt.png" class="proj-image">
+
         <div class="proj-info">
             <h3>Modeling Student Debt Dynamics</h3>
-            <p>Long-term simulation analyzing federal loans across lifecycle stages.</p>
-            <p>Built using Python, NumPy, Matplotlib, and Jupyter.</p>
+            <p>
+                A long-term simulation analyzing how federal loans evolve across multiple lifecycle stages.
+                SEIR-inspired modeling, policy forecasting, and system dynamics insights.
+            </p>
+            <p>
+                Built using Python, NumPy, Matplotlib, and Jupyter for visualization.
+                Presented at an NSF-funded STEM Research Symposium.
+            </p>
         </div>
     </div>
 </section>
@@ -153,23 +170,80 @@
     <h2 class="section-title">Skills</h2>
 
     <div class="skills-grid">
+
         <div class="skills-col">
             <h3>Technical Skills</h3>
-            <div class="skill"><span>Python</span><div class="bar"><div style="width:90%"></div></div></div>
-            <div class="skill"><span>React</span><div class="bar"><div style="width:82%"></div></div></div>
-            <div class="skill"><span>C++</span><div class="bar"><div style="width:75%"></div></div></div>
-            <div class="skill"><span>JavaScript</span><div class="bar"><div style="width:88%"></div></div></div>
-            <div class="skill"><span>TypeScript</span><div class="bar"><div style="width:80%"></div></div></div>
-            <div class="skill"><span>SQL</span><div class="bar"><div style="width:84%"></div></div></div>
+
+            <div class="skill">
+                <span>Python</span>
+                <div class="bar"><div style="width: 90%"></div></div>
+                <p class="percent">90%</p>
+            </div>
+
+            <div class="skill">
+                <span>React</span>
+                <div class="bar"><div style="width: 82%"></div></div>
+                <p class="percent">82%</p>
+            </div>
+
+            <div class="skill">
+                <span>C++</span>
+                <div class="bar"><div style="width: 75%"></div></div>
+                <p class="percent">75%</p>
+            </div>
+
+            <div class="skill">
+                <span>JavaScript</span>
+                <div class="bar"><div style="width: 88%"></div></div>
+                <p class="percent">88%</p>
+            </div>
+
+            <div class="skill">
+                <span>TypeScript</span>
+                <div class="bar"><div style="width: 80%"></div></div>
+                <p class="percent">80%</p>
+            </div>
+
+            <div class="skill">
+                <span>SQL</span>
+                <div class="bar"><div style="width: 84%"></div></div>
+                <p class="percent">84%</p>
+            </div>
         </div>
 
         <div class="skills-col">
             <h3>Professional Skills</h3>
-            <div class="skill"><span>Communication</span><div class="bar"><div style="width:90%"></div></div></div>
-            <div class="skill"><span>Teamwork</span><div class="bar"><div style="width:92%"></div></div></div>
-            <div class="skill"><span>Leadership</span><div class="bar"><div style="width:85%"></div></div></div>
-            <div class="skill"><span>Adaptability</span><div class="bar"><div style="width:88%"></div></div></div>
-            <div class="skill"><span>Curiosity</span><div class="bar"><div style="width:93%"></div></div></div>
+
+            <div class="skill">
+                <span>Communication</span>
+                <div class="bar"><div style="width: 90%"></div></div>
+                <p class="percent">90%</p>
+            </div>
+
+            <div class="skill">
+                <span>Teamwork</span>
+                <div class="bar"><div style="width: 92%"></div></div>
+                <p class="percent">92%</p>
+            </div>
+
+            <div class="skill">
+                <span>Leadership</span>
+                <div class="bar"><div style="width: 85%"></div></div>
+                <p class="percent">85%</p>
+            </div>
+
+            <div class="skill">
+                <span>Adaptability</span>
+                <div class="bar"><div style="width: 88%"></div></div>
+                <p class="percent">88%</p>
+            </div>
+
+            <div class="skill">
+                <span>Curiosity</span>
+                <div class="bar"><div style="width: 93%"></div></div>
+                <p class="percent">93%</p>
+            </div>
+
         </div>
     </div>
 </section>
@@ -179,16 +253,19 @@
     <h2 class="section-title">Contact</h2>
 
     <div class="contact-container">
-        <img class="contact-photo" src="emailpass.jpg">
+
+        <img src="emailpass.jpg" class="contact-photo">
 
         <div class="contact-info">
             <h3>Let's Connect</h3>
+
             <ul>
-                <li><a href="mailto:nathanbezabeh@gmail.com">📧 nathanbezabeh@gmail.com</a></li>
-                <li><a href="tel:5718663741">📞 (571) 866-3741</a></li>
+                <li><a href="mailto:nathanbezabeh@gmail.com">📧 Email: nathanbezabeh@gmail.com</a></li>
+                <li><a href="tel:5718663741">📞 Phone: (571) 866-3741</a></li>
                 <li><a href="https://www.linkedin.com/in/nat25et21" target="_blank">🔗 LinkedIn</a></li>
             </ul>
         </div>
+
     </div>
 </section>
 
