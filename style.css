@@ -13,17 +13,26 @@ body {
     background-color: #0b0f17;
     background-image: url("background.png");
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center top;
     background-size: cover;
     background-attachment: fixed;
 }
 
-/* iPhone background fix */
+/* iPhone/iPad TRUE FIX — SAME LOOK AS DESKTOP */
 @supports (-webkit-touch-callout: none) {
     body {
         background-attachment: scroll !important;
-        background-size: cover !important;
-        background-position: center center !important;
+        background-size: 100% auto !important;
+        background-position: center top !important;
+        background-repeat: no-repeat !important;
+    }
+}
+
+/* Extra safety for all mobile devices */
+@media (max-width: 768px) {
+    body {
+        background-size: 100% auto !important;
+        background-position: center top !important;
     }
 }
 
@@ -99,17 +108,17 @@ body {
 
 /* HERO ------------------------------------------ */
 .hero {
-    min-height: 100vh;                 /* Full page height */
+    min-height: 100vh;
     width: 85%;
     margin: auto;
 
     display: flex;
-    justify-content: center;           /* Center horizontally */
-    align-items: center;               /* Center vertically */
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     text-align: center;
 
-    padding-top: 160px;                /* Space for fixed header */
+    padding-top: 160px;   /* Room for fixed header */
     box-sizing: border-box;
 }
 
@@ -155,7 +164,7 @@ body {
     transform: scale(1.05);
 }
 
-/* FADE-IN ANIMATIONS */
+/* FADE-IN ANIMATIONS --------------------------- */
 .fade-item {
     opacity: 0;
     transform: translateY(20px);
@@ -396,13 +405,8 @@ footer {
         width: 90%;
     }
 
-    .hero-center h1 {
-        font-size: 42px;
-    }
-
-    .hero-center h3 {
-        font-size: 20px;
-    }
+    .hero-center h1 { font-size: 42px; }
+    .hero-center h3 { font-size: 20px; }
 
     .hero-center p {
         width: 100%;
@@ -441,15 +445,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .hero-center h1 {
-        font-size: 34px;
-    }
-
-    .hero-center p {
-        font-size: 15px;
-    }
-
-    .navbar a {
-        font-size: 12px;
-    }
+    .hero-center h1 { font-size: 34px; }
+    .hero-center p { font-size: 15px; }
+    .navbar a { font-size: 12px; }
 }
