@@ -1,5 +1,5 @@
 // ================================
-// PROJECT DETAILS FOR MODAL
+// PROJECT MODAL CONTENT
 // ================================
 const projects = [
   {
@@ -49,16 +49,13 @@ function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
-// Close modal when clicking outside box
 window.addEventListener('click', function (e) {
   const modal = document.getElementById('modal');
-  if (e.target === modal) {
-    closeModal();
-  }
+  if (e.target === modal) closeModal();
 });
 
 // ================================
-// SMOOTH SCROLL FOR NAV LINKS
+// SMOOTH SCROLL
 // ================================
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', function (e) {
@@ -71,22 +68,26 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ================================
-// HIDE NAVBAR ON SCROLL DOWN
-// SHOW NAVBAR ON SCROLL UP
+// NAVBAR HIDE ON SCROLL
 // ================================
 let lastScroll = 0;
 const header = document.querySelector('.header');
 
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
-
   if (currentScroll > lastScroll && currentScroll > 100) {
-    // scrolling down — hide navbar
     header.classList.add('hide');
   } else {
-    // scrolling up — show navbar
     header.classList.remove('hide');
   }
-
   lastScroll = currentScroll;
+});
+
+// ================================
+// FADE-IN ON LOAD
+// ================================
+window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".fade-item").forEach(item => {
+        item.classList.add("active");
+    });
 });
