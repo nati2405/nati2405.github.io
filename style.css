@@ -8,8 +8,10 @@
 }
 
 /* =========================================
-   GLOBAL BACKGROUND (FULL DEVICE ADAPTIVE)
+   GLOBAL BACKGROUND (TRUE ADAPTIVE)
 ========================================= */
+
+/* Remove background from body */
 html, body {
     width: 100%;
     min-height: 100%;
@@ -18,31 +20,33 @@ html, body {
     overflow-x: hidden;
 }
 
-/* Full adaptive background */
 body {
     font-family: 'Segoe UI', sans-serif;
     color: #e6edf3;
+    background: transparent !important;
+}
+
+/* Dedicated adaptive background layer */
+.background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 
     background-image: url("background.png");
     background-repeat: no-repeat;
-
-    /* 🔧 FIXED FROM center top → center center */
     background-position: center center;
-
     background-size: cover;
-    background-attachment: fixed;
 }
 
-/* iPhone/iPad Fix */
+/* iPhone/iPad Fix — prevents zooming/blur */
 @supports (-webkit-touch-callout: none) {
-    body {
+    .background-layer {
         background-attachment: scroll !important;
         background-size: cover !important;
-
-        /* 🔧 Must match main background */
         background-position: center center !important;
-
-        overflow-x: hidden !important;
     }
 }
 
