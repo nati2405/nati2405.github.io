@@ -1,87 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>SEIR Simulation Demo</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Debt Dynamics — Simulation</title>
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-<h1>SEIR Model Interactive Demo</h1>
+<div class="background-layer"></div>
 
-<div class="controls">
-    <label>β (Transmission Rate)
-        <input type="number" id="beta" value="1" step="0.1">
-    </label>
+<main class="project-container">
 
-    <label>σ (Incubation Rate)
-        <input type="number" id="sigma" value="1" step="0.1">
-    </label>
+  <!-- TITLE -->
+  <section class="project-header">
+    <h1>Modeling Student Debt Dynamics</h1>
+    <p class="subtitle">
+      A system-dynamics simulation inspired by SEIR epidemiological models
+    </p>
+  </section>
 
-    <label>γ (Recovery Rate)
-        <input type="number" id="gamma" value="0.1" step="0.05">
-    </label>
+  <!-- EXPLANATION -->
+  <section class="project-explanation">
+    <p>
+      This project models how student debt evolves across multiple financial stages
+      using a compartmental system inspired by SEIR models.
+      Borrowers transition between states representing financial exposure,
+      accumulation, active repayment stress, and resolution.
+    </p>
 
-    <label>Days
-        <input type="number" id="days" value="60">
-    </label>
+    <p>
+      The simulation highlights how policy-sensitive parameters influence
+      peak financial risk. The combined <strong>Exposed + Infected</strong> curves
+      represent the maximum concentration of borrowers under financial strain.
+    </p>
+  </section>
 
-    <button onclick="simulate()">Run Simulation</button>
-</div>
+  <!-- GRAPH -->
+  <section class="chart-section">
+    <canvas id="seirChart"></canvas>
+  </section>
 
-<div class="results">
-    <p id="estimate"></p>
-</div>
+  <!-- INPUTS -->
+  <section class="controls">
+    <h3>Simulation Parameters</h3>
 
-<canvas id="seirChart"></canvas>
+    <div class="input-grid">
+      <label>
+        Accumulation Rate (β)
+        <input type="number" step="0.1" id="beta" value="1">
+      </label>
 
-<script src="seir.js"></script>
+      <label>
+        Transition Rate (σ)
+        <input type="number" step="0.1" id="sigma" value="1">
+      </label>
 
-<script>
-let chart;
+      <label>
+        Resolution Rate (γ)
+        <input type="number" step="0.05" id="gamma" value="0.1">
+      </label>
+    </div>
 
-function simulate() {
-    const beta = parseFloat(document.getElementById("beta").value);
-    const sigma = parseFloat(document.getElementById("sigma").value);
-    const gamma = parseFloat(document.getElementById("gamma").value);
-    const days = parseInt(document.getElementById("days").value);
+    <button onclick="runSimulation()">Update Simulation</button>
+  </section>
 
-    const data = runSEIR(beta, sigma, gamma, days);
+  <!-- INTERPRETATION -->
+  <section class="interpretation">
+    <p id="interpretText"></p>
+  </section>
 
-    document.getElementById("estimate").innerHTML =
-        `Peak (Exposed + Infected): <b>${data.maxRisk.toFixed(3)}</b>
-         at day <b>${data.peakDay.toFixed(1)}</b>`;
+</main>
 
-    if (chart) chart.destroy();
-
-    chart = new Chart(document.getElementById("seirChart"), {
-        type: 'line',
-        data: {
-            labels: data.t,
-            datasets: [
-                { label: 'Susceptible', data: data.S_arr },
-                { label: 'Exposed', data: data.E_arr },
-                { label: 'Infected', data: data.I_arr },
-                { label: 'Recovered', data: data.R_arr }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { labels: { color: '#e6edf3' } }
-            },
-            scales: {
-                x: { title: { display: true, text: 'Days' } },
-                y: { title: { display: true, text: 'Population Proportion' } }
-            }
-        }
-    });
-}
-</script>
-
+<script src="demo.js"></script>
 </body>
 </html>

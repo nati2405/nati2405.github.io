@@ -1,50 +1,64 @@
-// SEIR model simulation (Euler integration)
+let chart;
 
-function runSEIR(beta, sigma, gamma, days, dt = 0.1) {
-    let steps = Math.floor(days / dt);
+// SEIR simulation
+function simulateSEIR(beta, sigma, gamma) {
+  const S = [0.99], E = [0.01], I = [0], R = [0];
+  const dt = 1;
+  const steps = 60;
 
-    let S = 0.99;
-    let E = 0.01;
-    let I = 0.0;
-    let R = 0.0;
+  for (let t = 1; t < steps; t++) {
+    const dS = -beta * S[t-1] * I[t-1];
+    const dE = beta * S[t-1] * I[t-1] - sigma * E[t-1];
+    const dI = sigma * E[t-1] - gamma * I[t-1];
+    const dR = gamma * I[t-1];
 
-    let t = [];
-    let S_arr = [];
-    let E_arr = [];
-    let I_arr = [];
-    let R_arr = [];
+    S.push(S[t-1] + dS * dt);
+    E.push(E[t-1] + dE * dt);
+    I.push(I[t-1] + dI * dt);
+    R.push(R[t-1] + dR * dt);
+  }
 
-    let maxRisk = 0;
-    let peakDay = 0;
-
-    for (let i = 0; i <= steps; i++) {
-        let time = i * dt;
-
-        t.push(time);
-        S_arr.push(S);
-        E_arr.push(E);
-        I_arr.push(I);
-        R_arr.push(R);
-
-        let risk = E + I;
-        if (risk > maxRisk) {
-            maxRisk = risk;
-            peakDay = time;
-        }
-
-        let dS = -beta * S * I;
-        let dE = beta * S * I - sigma * E;
-        let dI = sigma * E - gamma * I;
-        let dR = gamma * I;
-
-        S += dS * dt;
-        E += dE * dt;
-        I += dI * dt;
-        R += dR * dt;
-    }
-
-    return {
-        t, S_arr, E_arr, I_arr, R_arr,
-        maxRisk, peakDay
-    };
+  return { S, E, I, R };
 }
+
+// Render chart
+function runSimulation() {
+  const beta = parseFloat(document.getElementById("beta").value);
+  const sigma = parseFloat(document.getElementById("sigma").value);
+  const gamma = parseFloat(document.getElementById("gamma").value);
+
+  const data = simulateSEIR(beta, sigma, gamma);
+  const peakRisk = Math.max(...data.E.map((v, i) => v + data.I[i]));
+
+  document.getElementById("interpretText").innerText =
+    `Peak financial stress occurs when Exposed + Infected reaches ${(peakRisk*100).toFixed(1)}%.
+     Higher β increases accumulation risk, while higher γ accelerates resolution.`;
+
+  const ctx = document.getElementById("seirChart");
+
+  if (chart) chart.destroy();
+
+  chart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: data.S.map((_, i) => i),
+      datasets: [
+        { label: "Susceptible", data: data.S },
+        { label: "Exposed", data: data.E },
+        { label: "Infected", data: data.I },
+        { label: "Recovered", data: data.R }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { labels: { color: "#e6edf3" } } },
+      scales: {
+        x: { ticks: { color: "#9bb4c8" } },
+        y: { ticks: { color: "#9bb4c8" } }
+      }
+    }
+  });
+}
+
+// Initial render (IMPORTANT)
+runSimulation();
