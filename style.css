@@ -244,10 +244,6 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
-.cert-card:hover {
-    transform: translateY(-5px);
-}
-
 .cert-logo {
     width: 60px;
     border-radius: 10px;
@@ -269,10 +265,6 @@ body {
     display: flex;
     gap: 25px;
     align-items: center;
-}
-
-.exp-card:hover {
-    transform: translateY(-5px);
 }
 
 .exp-logo {
@@ -493,4 +485,31 @@ footer {
     font-weight: 600;
     color: #2bc4ad;
     letter-spacing: 0.3px;
+}
+
+/* =========================================
+   UNIFIED HOVER — SAME AS PROJECTS
+========================================= */
+
+.edu-card,
+.cert-card,
+.exp-card,
+.contact-container {
+    cursor: pointer;
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border 0.35s ease,
+        filter 0.35s ease;
+    border: 1px solid transparent;
+}
+
+.edu-card:hover,
+.cert-card:hover,
+.exp-card:hover,
+.contact-container:hover {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(46, 204, 186, 0.35);
+    filter: brightness(1.03);
 }
