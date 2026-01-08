@@ -464,3 +464,33 @@ footer {
         font-size: 15px;
     }
 }
+/* Make entire project card clickable */
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Hover = page transition signal */
+.project-large-card {
+    cursor: pointer;
+    transition: 
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border 0.35s ease;
+}
+
+/* Hover effect */
+.project-link:hover .project-large-card {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(46, 204, 186, 0.35);
+}
+
+/* CTA text styling */
+.proj-cta {
+    margin-top: 14px;
+    font-weight: 600;
+    color: #2bc4ad;
+    letter-spacing: 0.3px;
+}
