@@ -1,46 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | Nathan Bezabeh</title>
+    <meta charset="UTF-8">
+    <title>SEIR Simulation Demo</title>
+    <link rel="stylesheet" href="style.css">
 
-  <!-- Projects page styles -->
-  <link rel="stylesheet" href="style.css" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="logo">Nathan Bezabeh</a>
+<h1>SEIR Model Interactive Demo</h1>
 
-      <ul class="nav-links">
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#experience">Experience</a></li>
-        <li><a href="./" class="active">Projects</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+<div class="controls">
+    <label>β (Transmission Rate)
+        <input type="number" id="beta" value="1" step="0.1">
+    </label>
 
-  <!-- HERO -->
-  <section class="projects-hero">
-    <h1>Projects</h1>
-    <p>
-      Selected work in AI systems, computational modeling, and full-stack
-      engineering.
-    </p>
-  </section>
+    <label>σ (Incubation Rate)
+        <input type="number" id="sigma" value="1" step="0.1">
+    </label>
 
-  <!-- PROJECTS GRID (EMPTY FOR NOW) -->
-  <section class="projects-grid">
-    <div class="project-card placeholder">
-      <h3>Coming Soon</h3>
-      <p>Project demos will be added here.</p>
-    </div>
-  </section>
+    <label>γ (Recovery Rate)
+        <input type="number" id="gamma" value="0.1" step="0.05">
+    </label>
+
+    <label>Days
+        <input type="number" id="days" value="60">
+    </label>
+
+    <button onclick="simulate()">Run Simulation</button>
+</div>
+
+<div class="results">
+    <p id="estimate"></p>
+</div>
+
+<canvas id="seirChart"></canvas>
+
+<script src="seir.js"></script>
+
+<script>
+let chart;
+
+function simulate() {
+    const beta = parseFloat(document.getElementById("beta").value);
+    const sigma = parseFloat(document.getElementById("sigma").value);
+    const gamma = parseFloat(document.getElementById("gamma").value);
+    const days = parseInt(document.getElementById("days").value);
+
+    const data = runSEIR(beta, sigma, gamma, days);
+
+    document.getElementById("estimate").innerHTML =
+        `Peak (Exposed + Infected): <b>${data.maxRisk.toFixed(3)}</b>
+         at day <b>${data.peakDay.toFixed(1)}</b>`;
+
+    if (chart) chart.destroy();
+
+    chart = new Chart(document.getElementById("seirChart"), {
+        type: 'line',
+        data: {
+            labels: data.t,
+            datasets: [
+                { label: 'Susceptible', data: data.S_arr },
+                { label: 'Exposed', data: data.E_arr },
+                { label: 'Infected', data: data.I_arr },
+                { label: 'Recovered', data: data.R_arr }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { labels: { color: '#e6edf3' } }
+            },
+            scales: {
+                x: { title: { display: true, text: 'Days' } },
+                y: { title: { display: true, text: 'Population Proportion' } }
+            }
+        }
+    });
+}
+</script>
 
 </body>
 </html>
