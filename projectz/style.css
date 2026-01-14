@@ -71,3 +71,29 @@ button {
         font-size: 15px;
     }
 }
+.back-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    text-decoration: none;
+    background: transparent;
+    color: #2bc4ad;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(43,196,173,0.4);
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background: rgba(43,196,173,0.12);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .back-btn {
+        top: 18px;
+        right: 20px;
+        font-size: 14px;
+    }
+}
