@@ -13,6 +13,18 @@
 
 <h1>SEIR Model Interactive Demo</h1>
 
+<div class="project-detail-card">
+    <p class="proj-summary">
+        This demo visualizes the SEIR epidemiological model, showing how a
+        population moves between Susceptible, Exposed, Infected, and Recovered states.
+    </p>
+    <p class="proj-explain">
+        Adjust the parameters below to see how transmission, incubation,
+        and recovery rates affect outbreak timing and severity.
+    </p>
+</div>
+
+
 <div class="controls">
     <label>β (Transmission Rate)
         <input type="number" id="beta" value="1" step="0.1">
@@ -37,7 +49,9 @@
     <p id="estimate"></p>
 </div>
 
-<canvas id="seirChart"></canvas>
+<div class="chart-wrapper">
+    <canvas id="seirChart"></canvas>
+</div>
 
 <script src="seir.js"></script>
 
@@ -71,12 +85,21 @@ function simulate() {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: { labels: { color: '#e6edf3' } }
             },
             scales: {
-                x: { title: { display: true, text: 'Days' } },
-                y: { title: { display: true, text: 'Population Proportion' } }
+                x: { 
+                  title: { display: true, text: 'Days', color: '#e6edf3' },
+                  ticks: { color: '#9fb3c8' } 
+                },
+                y: { 
+                  title: { display: true, text: 'Population Proportion', color: '#e6edf3' },
+                  ticks: { color: '#9fb3c8' },
+                  min: 0,
+                  max: 1
+                }
             }
         }
     });
