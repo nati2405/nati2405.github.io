@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #2b004f, #0a0014);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: white;
+}
+
+/* ===== Alive Animated Background ===== */
+.background span {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: #a100ff;
+  filter: blur(120px);
+  opacity: 0.6;
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+.background span:nth-child(1) {
+  top: -50px;
+  left: -50px;
+}
+
+.background span:nth-child(2) {
+  background: #5a00ff;
+  bottom: -50px;
+  right: -50px;
+  animation-duration: 12s;
+}
+
+.background span:nth-child(3) {
+  background: #d000ff;
+  top: 40%;
+  left: 60%;
+  animation-duration: 9s;
+}
+
+@keyframes float {
+  from { transform: translateY(-80px); }
+  to { transform: translateY(80px); }
+}
+
+/* ===== Main Content ===== */
+.container {
+  text-align: center;
+  z-index: 2;
+}
+
+.countdown {
+  font-size: 80px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-shadow: 
+    0 0 20px #b100ff,
+    0 0 40px #6a00ff;
+  margin-bottom: 30px;
+}
+
+.remind-btn {
+  padding: 12px 32px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #a100ff, #5a00d1);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 15px #a100ff;
+  transition: 0.3s ease;
+}
+
+.remind-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #e100ff;
+}
