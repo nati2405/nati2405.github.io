@@ -33,9 +33,3 @@ updateCountdown();
 function remindMe() {
   alert("You're on the reminder list 😉");
 }
-
-// Back button → change to your main page filename
-function goBack() {
-  window.location.href = "../index.html";
-}
-
