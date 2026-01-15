@@ -284,8 +284,10 @@ body {
 }
 
 .proj-image {
-    width: 340px;
-    border-radius: 20px;
+    width: 260px;          
+    max-width: 100%;
+    height: auto;
+    border-radius: 18px;
 }
 
 .proj-info p {
@@ -512,4 +514,12 @@ footer {
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
     border: 1px solid rgba(46, 204, 186, 0.35);
     filter: brightness(1.03);
+}
+
+#projects.section {
+    margin: 60px auto;  
+}
+
+#projects.section + #projects.section {
+    margin-top: 0px;
 }
