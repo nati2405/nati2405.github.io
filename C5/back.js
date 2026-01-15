@@ -36,6 +36,6 @@ function remindMe() {
 
 // Back button → change to your main page filename
 function goBack() {
-  window.location.href = "main.html"; 
-  // change "main.html" to your real homepage file
+  window.location.href = "../index.html";
 }
+
