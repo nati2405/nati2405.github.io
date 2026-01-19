@@ -531,3 +531,10 @@ footer {
 #projects.section + #projects.section {
     margin-top: 0px;
 }
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
