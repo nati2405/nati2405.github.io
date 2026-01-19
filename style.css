@@ -21,6 +21,11 @@ html, body {
 }
 
 body {
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+body {
     font-family: 'Segoe UI', sans-serif;
     color: #e6edf3;
     background: transparent !important;
@@ -39,6 +44,9 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* iPhone/iPad Fix — prevents zooming/blur */
