@@ -148,3 +148,43 @@ body {
     0 0 45px #6a00ff;
   transform: scale(1.05);
 }
+
+.countdown {
+  font-size: clamp(40px, 8vw, 90px);
+}
+
+.countdown span {
+  font-size: clamp(14px, 2.5vw, 28px);
+}
+
+/* Scale buttons slightly on smaller screens */
+.remind-btn {
+  font-size: clamp(12px, 2vw, 15px);
+  padding: clamp(10px, 2vw, 14px) clamp(26px, 5vw, 42px);
+}
+
+/* Prevent content from touching edges on small devices */
+.container {
+  padding: 20px;
+}
+
+/* Scale background glow orbs for small screens */
+.background span {
+  width: 70vw;
+  height: 70vw;
+  max-width: 700px;
+  max-height: 700px;
+}
+
+/* Adjust back button on small screens */
+.back-btn {
+  font-size: clamp(12px, 2vw, 14px);
+  padding: 8px 14px;
+}
+
+/* Extra small phone safety */
+@media (max-width: 480px) {
+  .countdown {
+    letter-spacing: 3px;
+  }
+}
