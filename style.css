@@ -40,14 +40,9 @@ body {
     height: 100%;
     z-index: -1;
 
-    background-image: url("background.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-
-    transform: translateZ(0);
-    will-change: transform;
+    object-fit: cover;
 }
+
 
 /* iPhone/iPad Fix — prevents zooming/blur */
 @supports (-webkit-touch-callout: none) {
