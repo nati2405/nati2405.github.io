@@ -6,6 +6,7 @@
 
 body {
   height: 100vh;
+  height: 100svh;
   background: radial-gradient(circle at top, #0b0014, #020006);
   display: flex;
   justify-content: center;
@@ -17,9 +18,8 @@ body {
 
 /* ===== Futuristic Background ===== */
 .background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  inset: 0;
   overflow: hidden;
   z-index: 0;
 }
@@ -187,4 +187,10 @@ body {
   .countdown {
     letter-spacing: 3px;
   }
+}
+
+.background,
+.grid,
+.background span {
+    will-change: transform;
 }
