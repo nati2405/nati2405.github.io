@@ -1,5 +1,5 @@
 // ===== OWNER CONTROLS GLOBAL LAUNCH TIME =====
-const launchDate = new Date("2026-02-20T18:00:00Z").getTime();
+const launchDate = new Date("2026-03-03T18:00:00Z").getTime();
 // Change this date/time to control countdown globally
 
 const countdownEl = document.getElementById("countdown");
