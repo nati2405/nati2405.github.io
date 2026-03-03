@@ -98,9 +98,9 @@ const nav = document.querySelector(".navbar");
 
 if (toggleBtn && nav) {
   toggleBtn.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("open");
-    toggleBtn.setAttribute("aria-expanded", String(isOpen));
+    nav.classList.toggle("open");
   });
+
 
   // close menu when clicking a link
   nav.querySelectorAll("a").forEach((link) => {

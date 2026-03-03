@@ -562,60 +562,85 @@ footer {
 
 /* Keep header single-row layout */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 32px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* THIS is key */
+  z-index: 1000;
+  backdrop-filter: blur(12px);
 }
 
-/* ===== MOBILE NAV ===== */
-@media (max-width: 768px) {
-  .header {
-    padding: 12px 16px;
-  }
-
-  /* show hamburger */
+@media (min-width: 769px) {
   .nav-toggle {
-    display: block;
+    display: none;
   }
 
-  /* turn navbar into a dropdown panel */
+  .navbar {
+    display: flex !important;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+
   .navbar {
     position: fixed;
-    left: 12px;
-    right: 12px;
-    top: 70px; /* adjust if your header is taller */
-    display: grid;
-    gap: 10px;
-    padding: 14px;
-    border-radius: 16px;
-    background: rgba(10, 18, 28, 0.92);
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(10, 18, 28, 0.95);
     backdrop-filter: blur(10px);
 
-    /* closed by default */
-    transform: translateY(-10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    transform: translateY(-20px);
     opacity: 0;
     pointer-events: none;
-    transition: transform 180ms ease, opacity 180ms ease;
-    z-index: 9999;
+    transition: 0.25s ease;
   }
 
-  /* open state */
   .navbar.open {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
   }
 
-  .navbar a {
-    margin-left: 0;
-    padding: 10px 12px;
-    border-radius: 12px;
-    font-size: 15px;
-    text-align: left;
+  .nav-toggle {
+    display: block; /* shows hamburger */
   }
 
-  .navbar .contact-btn {
-    text-align: center;
-    padding: 12px 14px;
+  /* Hide desktop nav inline layout */
+  .navbar:not(.open) {
+    display: none;
   }
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px 0;
+  background: white;
+  border-radius: 2px;
 }
