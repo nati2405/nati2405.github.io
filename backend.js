@@ -93,3 +93,28 @@ window.addEventListener("scroll", () => {
   // Prevent negative scroll values on Safari
   lastScrollY = currentY <= 0 ? 0 : currentY;
 });
+const toggleBtn = document.querySelector(".nav-toggle");
+const nav = document.querySelector(".navbar");
+
+if (toggleBtn && nav) {
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    toggleBtn.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // close menu when clicking a link
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      toggleBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // close menu when tapping outside
+  document.addEventListener("click", (e) => {
+    if (!nav.contains(e.target) && !toggleBtn.contains(e.target)) {
+      nav.classList.remove("open");
+      toggleBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+}

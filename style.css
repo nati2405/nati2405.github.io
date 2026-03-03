@@ -541,3 +541,81 @@ footer {
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
+
+/* ===== NAV TOGGLE (HAMBURGER) ===== */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  margin: 6px 0;
+  background: #e9eef5;
+  border-radius: 2px;
+}
+
+/* Keep header single-row layout */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== MOBILE NAV ===== */
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 16px;
+  }
+
+  /* show hamburger */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* turn navbar into a dropdown panel */
+  .navbar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: 70px; /* adjust if your header is taller */
+    display: grid;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(10, 18, 28, 0.92);
+    backdrop-filter: blur(10px);
+
+    /* closed by default */
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 180ms ease, opacity 180ms ease;
+    z-index: 9999;
+  }
+
+  /* open state */
+  .navbar.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar a {
+    margin-left: 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .navbar .contact-btn {
+    text-align: center;
+    padding: 12px 14px;
+  }
+}
