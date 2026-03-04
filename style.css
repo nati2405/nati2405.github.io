@@ -397,18 +397,6 @@ footer {
 
 @media (max-width: 768px) {
 
-    .header {
-        padding: 12px 20px;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .navbar {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 14px;
-    }
-
     .hero {
         width: 90%;
         padding-top: 150px;
@@ -456,11 +444,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .navbar a {
-        font-size: 13px;
-        margin-left: 12px;
-    }
-
     .hero-center h1 {
         font-size: 34px;
     }
@@ -543,50 +526,12 @@ footer {
 }
 
 /* ===== NAV TOGGLE (HAMBURGER) ===== */
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: 0;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 26px;
-  height: 2px;
-  margin: 6px 0;
-  background: #e9eef5;
-  border-radius: 2px;
-}
-
-/* Keep header single-row layout */
-/* ===== Base header/nav (desktop default) ===== */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1000;
-  background: rgba(11, 15, 23, 0.85);
-  backdrop-filter: blur(10px);
-}
-
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.logo-text {
-  font-size: 1.5rem;
-}
-
-/* hamburger hidden on desktop */
 .nav-toggle {
   display: none;
   background: transparent;
@@ -604,16 +549,8 @@ footer {
   border-radius: 2px;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* ===== Mobile ===== */
 @media (max-width: 768px) {
   .header {
-    /* IMPORTANT: keep row layout, not column */
     flex-direction: row;
     padding: 10px 16px;
   }
@@ -634,90 +571,18 @@ footer {
     padding: 16px;
     background: rgba(10, 18, 28, 0.96);
     backdrop-filter: blur(10px);
-
-    display: none;            /* hidden by default */
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: 14px;
   }
 
   .navbar.open {
-    display: flex;            /* shown when JS adds .open */
+    display: flex;
   }
 
   .navbar a {
-    margin-left: 0;           /* avoid desktop spacing on mobile */
+    margin-left: 0;
     font-size: 15px;
   }
-}
-
-@media (min-width: 769px) {
-  .nav-toggle {
-    display: none;
-  }
-
-  .navbar {
-    display: flex !important;
-    align-items: center;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .navbar {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background: rgba(10, 18, 28, 0.95);
-    backdrop-filter: blur(10px);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-
-    transform: translateY(-20px);
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.25s ease;
-  }
-
-  .navbar.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .nav-toggle {
-    display: block; /* shows hamburger */
-  }
-
-  /* Hide desktop nav inline layout */
-  .navbar:not(.open) {
-    display: none;
-  }
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  margin: 5px 0;
-  background: white;
-  border-radius: 2px;
 }
