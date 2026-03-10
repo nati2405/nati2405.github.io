@@ -8,7 +8,8 @@
 }
 
 /* =========================================
-   GLOBAL BACKGROUND (TRUE ADAPTIVE)
+   GLOBAL BACKGROUND (LIVE FALLING HEX BACKGROUND)
+   CHANGE: replaced fixed image background with animated canvas background
 ========================================= */
 
 /* Remove background from body */
@@ -17,48 +18,55 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    /* CHANGE: Add your background color here as a fallback */
-    background-color: #0b0f17; 
+    background-color: #040a14; /* CHANGE: darker blue fallback */
 }
 
 body {
-    /* CHANGE: Use dvh (dynamic) instead of svh (small) */
-    min-height: 100dvh; 
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
-}
-
-body {
     font-family: 'Segoe UI', sans-serif;
     color: #e6edf3;
     background: transparent !important;
 }
 
-/* Dedicated adaptive background layer */
+/* CHANGE: old fixed image background disabled */
 .background-layer {
-    position: fixed;
-    /* CHANGE: Use inset: 0 to ensure it stretches past the bars */
-    top: -5vh; 
-    bottom: -5vh;
-    left: 0;
-    right: 0;
-    width: 100%;
-    /* We make it slightly taller than the screen to hide the gap during scrolls */
-    height: 110dvh; 
-    z-index: -1;
-    background-image: url("background.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    display: none !important;
 }
 
-/* iPhone/iPad Fix — prevents zooming/blur */
-@supports (-webkit-touch-callout: none) {
-    .background-layer {
-        background-attachment: scroll !important;
-        background-size: cover !important;
-        background-position: center center !important;
-    }
+/* CHANGE: new live animated hex canvas background */
+#hex-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    display: block;
+    background:
+        radial-gradient(circle at top left, rgba(0, 200, 255, 0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(0, 150, 255, 0.05), transparent 25%),
+        linear-gradient(180deg, #030813 0%, #061120 55%, #08172a 100%);
+}
+
+/* CHANGE: dark overlay for readability over animated background */
+.background-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        linear-gradient(to bottom, rgba(2, 8, 18, 0.30), rgba(2, 8, 18, 0.18)),
+        radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.22) 100%);
+}
+
+/* CHANGE: keep all foreground content above live background */
+.header,
+.hero,
+.section,
+footer {
+    position: relative;
+    z-index: 2;
 }
 
 /* =========================================

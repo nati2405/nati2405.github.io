@@ -118,3 +118,103 @@ if (toggleBtn && nav) {
     }
   });
 }
+
+/* CHANGE: live falling neon hex background */
+const canvas = document.getElementById("hex-bg");
+
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+  let w, h, dpr;
+  let hexes = [];
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function resizeCanvas() {
+    dpr = window.devicePixelRatio || 1;
+    w = window.innerWidth;
+    h = window.innerHeight;
+
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = `${w}px`;
+    canvas.style.height = `${h}px`;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    createHexes();
+  }
+
+  function createHexes() {
+    hexes = [];
+    const count = w < 768 ? 28 : 48; /* CHANGE: responsive density */
+
+    for (let i = 0; i < count; i++) {
+      hexes.push({
+        x: random(0, w),
+        y: random(-h, h),
+        size: random(w < 768 ? 16 : 22, w < 768 ? 38 : 68),
+        speed: random(0.25, 0.9),
+        drift: random(-0.12, 0.12),
+        rotation: random(0, Math.PI * 2),
+        rotationSpeed: random(-0.002, 0.002),
+        alpha: random(0.10, 0.30),
+        blur: random(8, 18)
+      });
+    }
+  }
+
+  function drawHex(x, y, r, rotation, alpha, blur) {
+    ctx.beginPath();
+
+    for (let i = 0; i < 6; i++) {
+      const angle = rotation + (Math.PI / 3) * i;
+      const px = x + r * Math.cos(angle);
+      const py = y + r * Math.sin(angle);
+
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+
+    ctx.closePath();
+    ctx.shadowBlur = blur;
+    ctx.shadowColor = `rgba(35, 220, 255, ${alpha * 1.8})`;
+    ctx.strokeStyle = `rgba(35, 220, 255, ${alpha})`;
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+
+    /* CHANGE: subtle dark blue moving glow wash */
+    const grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, "rgba(0, 190, 255, 0.015)");
+    grad.addColorStop(0.5, "rgba(0, 255, 200, 0.025)");
+    grad.addColorStop(1, "rgba(0, 120, 255, 0.015)");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    for (const hex of hexes) {
+      drawHex(hex.x, hex.y, hex.size, hex.rotation, hex.alpha, hex.blur);
+
+      hex.y += hex.speed;
+      hex.x += hex.drift;
+      hex.rotation += hex.rotationSpeed;
+
+      if (hex.y - hex.size > h) {
+        hex.y = -hex.size - random(20, 200);
+        hex.x = random(0, w);
+      }
+
+      if (hex.x < -100) hex.x = w + 100;
+      if (hex.x > w + 100) hex.x = -100;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+  animate();
+}
