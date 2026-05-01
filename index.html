@@ -2,23 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-
-    <!-- Required for full responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-
-    <title>Nathan Bezabeh — Portfolio</title>
-
+    <title>Nathan Bezabeh - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
-<!-- REQUIRED FOR PERFECT ADAPTIVE BACKGROUND -->
 <canvas id="hex-bg"></canvas>
 <div class="background-layer"></div>
+<div class="background-overlay"></div>
 
-<!-- HEADER / NAVBAR -->
 <header class="header">
   <div class="brand">
     <div class="logo-circle">NB</div>
@@ -42,378 +39,371 @@
   </nav>
 </header>
 
-<!-- HERO -->
-<section id="about" class="hero">
+<section id="about" class="hero reveal">
     <div class="hero-center">
-        <h1>Hi, I'm <span class="highlight">Nathan Bezabeh</span></h1>
-
-        <h3>AI Systems • Computational Modeling • Full-Stack Engineering</h3>
+        <p class="eyebrow">AI systems / full-stack engineering / research</p>
+        <h1>Building <span class="highlight">intelligent systems</span>.</h1>
+        <h3>Software engineering, applied research, and product development.</h3>
 
         <p>
-            I build AI-powered applications and data-driven systems, spanning machine learning, simulation, and full-stack development. Computer Science at Virginia Tech.
-            NSF-supported Research • AI Fellow (Headstarter) • Computational Biology Research
+            Virginia Tech computer science student and CEO of C5 Active, focused on data-driven systems and full-stack development.
         </p>
 
-        <a href="Bezabeh_N1.pdf" class="resume-btn" download>
-            Download Resume
-        </a>
+        <div class="hero-actions">
+            <a href="Bezabeh_N1.pdf" class="resume-btn" download>
+                Download Resume
+            </a>
+            <a href="#projects" class="ghost-btn">
+                Explore Projects
+            </a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-value">AI + ML</span>
+                <span class="hero-stat-label">Applied systems, automation, and product workflows</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-value">Research</span>
+                <span class="hero-stat-label">NSF-supported modeling, analysis, and experimentation</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-value">Full Stack</span>
+                <span class="hero-stat-label">Interfaces, APIs, and end-to-end implementation</span>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education" class="section pushed-down">
+<section id="education" class="section pushed-down reveal">
     <h2 class="section-title">Education</h2>
 
     <div class="edu-grid">
-
-        <div class="edu-card">
-            <img src="vt.png" class="edu-logo">
+        <div class="edu-card reveal-card">
+            <img src="vt.png" class="edu-logo" alt="Virginia Tech logo">
             <div>
                 <h3>Virginia Tech</h3>
-                <p>B.S. Computer Science — AI Focus</p>
-                <p>Research, simulation modeling, software engineering.</p>
+                <p>B.S. Computer Science</p>
+                <p>Focused on intelligent systems, simulation, software engineering, and product-centered technical problem solving.</p>
             </div>
         </div>
 
-        <div class="edu-card">
-            <img src="nova.png" class="edu-logo">
+        <div class="edu-card reveal-card">
+            <img src="nova.png" class="edu-logo" alt="Northern Virginia Community College logo">
             <div>
                 <h3>Northern Virginia Community College</h3>
-                <p>A.S. Computer Science & Engineering</p>
-                <p>STEM-focused institution with hands-on research opportunities.</p>
+                <p>A.S. Computer Science</p>
+                <p>Built a strong technical foundation through STEM coursework, systems thinking, and hands-on collaboration.</p>
             </div>
         </div>
-
     </div>
 </section>
 
-<!-- CERTIFICATIONS -->
-<section id="certifications" class="section">
+<section id="certifications" class="section reveal">
     <h2 class="section-title">Certifications</h2>
 
     <div class="cert-grid">
-
-        <div class="cert-card">
-            <img src="oracle.png" class="cert-logo">
+        <div class="cert-card reveal-card">
+            <img src="oracle.png" class="cert-logo" alt="Oracle logo">
             <div>
                 <h3>Oracle Data Science</h3>
-                <p>Data analysis, modeling, and machine learning workflows using Oracle tools.</p>
+                <p>Applied analytics, data modeling, and machine learning workflows using Oracle's data science ecosystem.</p>
             </div>
         </div>
 
-        <div class="cert-card">
-            <img src="codepath.png" class="cert-logo">
+        <div class="cert-card reveal-card">
+            <img src="codepath.png" class="cert-logo" alt="CodePath logo">
             <div>
                 <h3>Intro to Cybersecurity</h3>
-                <p>Security principles, threats, and protection strategies.</p>
+                <p>Security fundamentals covering threat awareness, attack surfaces, and practical protection strategies.</p>
             </div>
         </div>
 
-        <div class="cert-card">
-            <img src="oracle.png" class="cert-logo">
+        <div class="cert-card reveal-card">
+            <img src="oracle.png" class="cert-logo" alt="Oracle logo">
             <div>
                 <h3>Oracle AI Foundation</h3>
-                <p>AI fundamentals, concepts, and practical knowledge.</p>
+                <p>Core AI concepts, model literacy, and practical foundations for modern intelligent applications.</p>
             </div>
         </div>
-
     </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="section">
+<section id="experience" class="section reveal">
     <h2 class="section-title">Experience</h2>
 
     <div class="exp-grid">
-
-        <div class="exp-card">
-            <img src="Epiq.png" class="exp-logo">
+        <div class="exp-card reveal-card">
+            <img src="Epiq.png" class="exp-logo" alt="EPIQ logo">
             <div>
                 <h3>EPIQ CCA</h3>
-                <p>Breach support and incident response.</p>
+                <p>Supported breach response workflows with a focus on communication, precision, and operational coordination.</p>
             </div>
         </div>
         
-        <div class="exp-card">
-            <img src="cvs.png" class="exp-logo">
+        <div class="exp-card reveal-card">
+            <img src="cvs.png" class="exp-logo" alt="CVS logo">
             <div>
                 <h3>CVS Pharmacy Technician</h3>
-                <p>Healthcare operations & patient support.</p>
+                <p>Delivered reliable healthcare operations support in a fast-paced, detail-sensitive environment.</p>
             </div>
         </div>
 
-        <div class="exp-card">
-            <img src="cure.png" class="exp-logo">
+        <div class="exp-card reveal-card">
+            <img src="cure.png" class="exp-logo" alt="CURE program logo">
             <div>
-                <h3>CURE Program — GMU/NSF</h3>
-                <p>Computational biology modeling & genetic analysis research.</p>
+                <h3>CURE Program - GMU/NSF</h3>
+                <p>Conducted computational biology research using predictive modeling and genetic analysis workflows.</p>
             </div>
         </div>
 
-        <div class="exp-card">
-            <img src="headstarter.png" class="exp-logo">
+        <div class="exp-card reveal-card">
+            <img src="headstarter.png" class="exp-logo" alt="Headstarter logo">
             <div>
                 <h3>AI Fellowship Developer</h3>
-                <p>AI chatbot & inventory automation systems.</p>
+                <p>Built AI-powered applications including chatbot systems and automation-driven product tooling.</p>
             </div>
         </div>
-
     </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="section">
+<section id="projects" class="section reveal">
   <h2 class="section-title">Projects</h2>
+  <p class="section-intro">Selected builds that blend engineering depth, clear product thinking, and research-informed experimentation.</p>
 
-  <a href="/C5/" class="project-link">
-    <div class="project-large-card">
-      <img src="/c5_logo.png" class="proj-image" alt="C5 Active Project">
+  <div class="project-stack">
+    <a href="https://www.c5active.com" class="project-link reveal-card" target="_blank" rel="noopener noreferrer">
+      <div class="project-large-card">
+        <img src="/c5_logo.png" class="proj-image" alt="C5 Active Project">
 
-      <div class="proj-info">
-        <h3>Finding the Perfect Workout Partner with C5 Active</h3>
-        <p>
-          A dynamic platform that connects fitness enthusiasts in your area, helping beginners and casual lifters 
-          find accountability partners, schedule workouts, and build consistent fitness habits through community-driven motivation 
-          and personalized matching.
-        </p>
-        <p class="proj-cta">
-          View Project Details →
-        </p>
+        <div class="proj-info">
+          <h3>C5 Active</h3>
+          <p>
+            A fitness discovery platform designed to help people find compatible workout partners, stay consistent, and build momentum through smarter matching and community-driven accountability.
+          </p>
+          <p class="proj-cta">
+            Visit live site ->
+          </p>
+        </div>
       </div>
-    </div>
-  </a>
-</section>
+    </a>
 
-<section id="projects" class="section">
-  <a href="/student_debt/" class="project-link">
-    <div class="project-large-card">
-      <img src="/student_debt.png" class="proj-image" alt="Student Debt Modeling Project">
+    <a href="/student_debt/" class="project-link reveal-card">
+      <div class="project-large-card">
+        <img src="/student_debt.png" class="proj-image" alt="Student Debt Modeling Project">
 
-      <div class="proj-info">
-        <h3>Modeling Student Debt Dynamics</h3>
-        <p>
-          A long-term simulation analyzing how federal loans evolve across multiple lifecycle stages.
-          SEIR-inspired modeling, policy forecasting, and system dynamics insights.
-        </p>
-        <p class="proj-cta">
-          View Project Details →
-        </p>
+        <div class="proj-info">
+          <h3>Modeling Student Debt Dynamics</h3>
+          <p>
+            A long-horizon simulation exploring how federal student loans evolve across life stages, using system dynamics and policy-aware forecasting to surface structural patterns over time.
+          </p>
+          <p class="proj-cta">
+            View project breakdown ->
+          </p>
+        </div>
       </div>
-    </div>
-  </a>
-</section>
-
-
-<!-- SKILLS -->
-<section id="skills" class="section">
-  <h2 class="section-title">Skills & Technologies</h2>
-
-  <div class="skills-marquee-wrapper">
-
-    <!-- TOP ROW: LANGUAGES -->
-    <div class="skills-marquee marquee-left">
-      <div class="skills-track">
-
-        <div class="skill-card">
-          <img src="icons/python.svg" class="skill-icon">
-          <span>Python</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/java.svg" class="skill-icon">
-          <span>Java</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/cplusplus.svg" class="skill-icon">
-          <span>C++</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/javascript.svg" class="skill-icon">
-          <span>JavaScript</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/typescript.svg" class="skill-icon">
-          <span>TypeScript</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/postgresql.svg" class="skill-icon">
-          <span>SQL</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/html5.svg" class="skill-icon">
-          <span>HTML</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/css3.svg" class="skill-icon">
-          <span>CSS</span>
-        </div>
-
-        <!-- DUPLICATE FOR LOOP -->
-        <div class="skill-card">
-          <img src="icons/python.svg" class="skill-icon">
-          <span>Python</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/java.svg" class="skill-icon">
-          <span>Java</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/cplusplus.svg" class="skill-icon">
-          <span>C++</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/javascript.svg" class="skill-icon">
-          <span>JavaScript</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/typescript.svg" class="skill-icon">
-          <span>TypeScript</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/postgresql.svg" class="skill-icon">
-          <span>SQL</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/html5.svg" class="skill-icon">
-          <span>HTML</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/css3.svg" class="skill-icon">
-          <span>CSS</span>
-        </div>
-
-      </div>
-    </div>
-
-
-    <!-- BOTTOM ROW: FRAMEWORKS -->
-    <div class="skills-marquee marquee-right">
-      <div class="skills-track">
-
-        <div class="skill-card">
-          <img src="icons/linux.svg" class="skill-icon">
-          <span>Linux</span>
-        </div>
-        
-        <div class="skill-card">
-          <img src="icons/git.svg" class="skill-icon">
-          <span>Git</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/react.svg" class="skill-icon">
-          <span>React</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/nextjs.svg" class="skill-icon">
-          <span>Next.js</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/firebase.svg" class="skill-icon">
-          <span>Firebase</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/OpenAI.svg" class="skill-icon">
-          <span>OpenAI API</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/docker.svg" class="skill-icon">
-          <span>Docker</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/nodejs.svg" class="skill-icon">
-          <span>Node.js</span>
-        </div>
-
-        <!-- DUPLICATE FOR LOOP -->
-        <div class="skill-card">
-          <img src="icons/linux.svg" class="skill-icon">
-          <span>Linux</span>
-        </div>
-        
-        <div class="skill-card">
-          <img src="icons/git.svg" class="skill-icon">
-          <span>Git</span>
-        </div>
-        
-        <div class="skill-card">
-          <img src="icons/react.svg" class="skill-icon">
-          <span>React</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/nextjs.svg" class="skill-icon">
-          <span>Next.js</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/firebase.svg" class="skill-icon">
-          <span>Firebase</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/OpenAI.svg" class="skill-icon">
-          <span>OpenAI API</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/docker.svg" class="skill-icon">
-          <span>Docker</span>
-        </div>
-
-        <div class="skill-card">
-          <img src="icons/nodejs.svg" class="skill-icon">
-          <span>Node.js</span>
-        </div>
-
-      </div>
-    </div>
-
+    </a>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section">
-    <h2 class="section-title">Contact</h2>
+<section id="skills" class="section reveal">
+  <h2 class="section-title">Skills & Technologies</h2>
+  <p class="skills-subtitle">Tools I use to move from concept and research to polished, production-minded execution.</p>
 
-    <div class="contact-container">
-
-        <img src="emailpass.jpg" class="contact-photo">
-
-        <div class="contact-info">
-            <h3>Let's Connect</h3>
-
-            <ul>
-                <li><a href="mailto:nathanbezabeh@gmail.com">📧 Email: nathanbezabeh@gmail.com</a></li>
-                <li><a href="tel:5718663741">📞 Phone: (571) 866-3741</a></li>
-                <li><a href="https://www.linkedin.com/in/nat25et21" target="_blank">🔗 LinkedIn</a></li>
-            </ul>
+  <div class="skills-marquee-wrapper">
+    <div class="skills-marquee marquee-left">
+      <div class="skills-track">
+        <div class="skill-card">
+          <img src="icons/python.svg" class="skill-icon" alt="Python icon">
+          <span>Python</span>
         </div>
 
+        <div class="skill-card">
+          <img src="icons/java.svg" class="skill-icon" alt="Java icon">
+          <span>Java</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/cplusplus.svg" class="skill-icon" alt="C++ icon">
+          <span>C++</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/javascript.svg" class="skill-icon" alt="JavaScript icon">
+          <span>JavaScript</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/typescript.svg" class="skill-icon" alt="TypeScript icon">
+          <span>TypeScript</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/postgresql.svg" class="skill-icon" alt="SQL icon">
+          <span>SQL</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/html5.svg" class="skill-icon" alt="HTML icon">
+          <span>HTML</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/css3.svg" class="skill-icon" alt="CSS icon">
+          <span>CSS</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/python.svg" class="skill-icon" alt="Python icon">
+          <span>Python</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/java.svg" class="skill-icon" alt="Java icon">
+          <span>Java</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/cplusplus.svg" class="skill-icon" alt="C++ icon">
+          <span>C++</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/javascript.svg" class="skill-icon" alt="JavaScript icon">
+          <span>JavaScript</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/typescript.svg" class="skill-icon" alt="TypeScript icon">
+          <span>TypeScript</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/postgresql.svg" class="skill-icon" alt="SQL icon">
+          <span>SQL</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/html5.svg" class="skill-icon" alt="HTML icon">
+          <span>HTML</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/css3.svg" class="skill-icon" alt="CSS icon">
+          <span>CSS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-marquee marquee-right">
+      <div class="skills-track">
+        <div class="skill-card">
+          <img src="icons/linux.svg" class="skill-icon" alt="Linux icon">
+          <span>Linux</span>
+        </div>
+        
+        <div class="skill-card">
+          <img src="icons/git.svg" class="skill-icon" alt="Git icon">
+          <span>Git</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/react.svg" class="skill-icon" alt="React icon">
+          <span>React</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/nextjs.svg" class="skill-icon" alt="Next.js icon">
+          <span>Next.js</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/firebase.svg" class="skill-icon" alt="Firebase icon">
+          <span>Firebase</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/OpenAI.svg" class="skill-icon" alt="OpenAI icon">
+          <span>OpenAI API</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/docker.svg" class="skill-icon" alt="Docker icon">
+          <span>Docker</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/nodejs.svg" class="skill-icon" alt="Node.js icon">
+          <span>Node.js</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/linux.svg" class="skill-icon" alt="Linux icon">
+          <span>Linux</span>
+        </div>
+        
+        <div class="skill-card">
+          <img src="icons/git.svg" class="skill-icon" alt="Git icon">
+          <span>Git</span>
+        </div>
+        
+        <div class="skill-card">
+          <img src="icons/react.svg" class="skill-icon" alt="React icon">
+          <span>React</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/nextjs.svg" class="skill-icon" alt="Next.js icon">
+          <span>Next.js</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/firebase.svg" class="skill-icon" alt="Firebase icon">
+          <span>Firebase</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/OpenAI.svg" class="skill-icon" alt="OpenAI icon">
+          <span>OpenAI API</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/docker.svg" class="skill-icon" alt="Docker icon">
+          <span>Docker</span>
+        </div>
+
+        <div class="skill-card">
+          <img src="icons/nodejs.svg" class="skill-icon" alt="Node.js icon">
+          <span>Node.js</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section reveal">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact-container reveal-card">
+        <img src="emailpass.jpg" class="contact-photo" alt="Nathan Bezabeh portrait">
+
+        <div class="contact-info">
+            <h3>Let's build something sharp.</h3>
+            <p>
+                I am open to internships, research, and engineering opportunities where I can contribute across AI, software, and product execution.
+            </p>
+
+            <ul>
+                <li><a href="mailto:nathanbezabeh@gmail.com">Email: nathanbezabeh@gmail.com</a></li>
+                <li><a href="tel:5718663741">Phone: (571) 866-3741</a></li>
+                <li><a href="https://www.linkedin.com/in/nat25et21" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            </ul>
+        </div>
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-    © 2025 Nathan Bezabeh — Built with passion
+    (c) 2025 Nathan Bezabeh - Built for momentum, clarity, and future-facing work.
 </footer>
 
 <script src="backend.js"></script>

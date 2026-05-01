@@ -1,130 +1,104 @@
-// ================================
-// PROJECT DETAILS FOR MODAL
-// ================================
-const projects = [
-  {
-    title: 'Student Debt Modeling & Simulation',
-    content: `
-      <p><strong>Context:</strong> Research internship building Python-based simulations to model long-term effects of student loan policy systems.</p>
-      <p><strong>Highlights:</strong> Designed reproducible Google Colab workflows, applied discrete math & calculus modeling, and presented results at NSF-supported research forums.</p>
-    `
-  },
-
-  {
-    title: 'Computational Biology Predictive Modeling',
-    content: `
-      <p><strong>Context:</strong> Contributed to the CURE-2025 Computational Biology project focusing on homology prediction.</p>
-      <p><strong>Highlights:</strong> Built Random Forest models in R, improved prediction performance, and optimized analysis workflows in RStudio + Colab.</p>
-    `
-  },
-
-  {
-    title: 'AI Chatbot & Inventory Management System',
-    content: `
-      <p><strong>Context:</strong> Full-stack application built during the Headstarter AI Fellowship.</p>
-      <p><strong>Highlights:</strong> Created a Rasa-powered conversational chatbot, automated product tracking, and built a full inventory dashboard using React/Next.js.</p>
-    `
-  }
-];
-
-// ================================
-// OPEN MODAL
-// ================================
-function openModal(index) {
-  const modal = document.getElementById('modal');
-  const modalBody = document.getElementById('modal-body');
-
-  modalBody.innerHTML = `
-    <h3>${projects[index].title}</h3>
-    ${projects[index].content}
-  `;
-
-  modal.style.display = 'flex';
-}
-
-// ================================
-// CLOSE MODAL
-// ================================
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
-
-// Close modal when clicking outside box
-window.addEventListener('click', function (e) {
-  const modal = document.getElementById('modal');
-  if (e.target === modal) {
-    closeModal();
-  }
-});
-
-// ================================
-// SMOOTH SCROLL FOR NAV LINKS
-// ================================
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-// ================================
-// NAVBAR HIDE/SHOW ON SCROLL
-// ================================
-// Smooth & stable on all devices, including iPhone Safari
+const header = document.querySelector(".header");
+const toggleBtn = document.querySelector(".nav-toggle");
+const nav = document.querySelector(".navbar");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let lastScrollY = window.pageYOffset;
-const header = document.querySelector(".header");
+
+function getHeaderOffset() {
+  return header ? header.offsetHeight + 24 : 0;
+}
+
+function setMenuState(isOpen) {
+  if (!nav || !toggleBtn) {
+    return;
+  }
+
+  nav.classList.toggle("open", isOpen);
+  toggleBtn.setAttribute("aria-expanded", String(isOpen));
+}
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const target = document.querySelector(link.getAttribute("href"));
+
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion ? "auto" : "smooth"
+    });
+
+    setMenuState(false);
+  });
+});
 
 window.addEventListener("scroll", () => {
   const currentY = window.pageYOffset;
 
-  // Scrolling down → hide navbar
-  if (currentY > lastScrollY && currentY > 80) {
-    header.classList.add("hide");
-  }
-  // Scrolling up → show navbar
-  else {
-    header.classList.remove("hide");
+  if (header) {
+    header.classList.toggle("scrolled", currentY > 18);
+
+    if (currentY > lastScrollY && currentY > 96) {
+      header.classList.add("hide");
+    } else {
+      header.classList.remove("hide");
+    }
   }
 
-  // Prevent negative scroll values on Safari
   lastScrollY = currentY <= 0 ? 0 : currentY;
 });
-const toggleBtn = document.querySelector(".nav-toggle");
-const nav = document.querySelector(".navbar");
 
 if (toggleBtn && nav) {
   toggleBtn.addEventListener("click", () => {
-    nav.classList.toggle("open");
+    const willOpen = !nav.classList.contains("open");
+    setMenuState(willOpen);
   });
 
-
-  // close menu when clicking a link
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
-      toggleBtn.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  // close menu when tapping outside
-  document.addEventListener("click", (e) => {
-    if (!nav.contains(e.target) && !toggleBtn.contains(e.target)) {
-      nav.classList.remove("open");
-      toggleBtn.setAttribute("aria-expanded", "false");
+  document.addEventListener("click", (event) => {
+    if (!nav.contains(event.target) && !toggleBtn.contains(event.target)) {
+      setMenuState(false);
     }
   });
 }
 
-/* CHANGE: live falling neon hex background */
+const revealElements = document.querySelectorAll(".reveal, .reveal-card");
+
+if (prefersReducedMotion) {
+  revealElements.forEach((element) => element.classList.add("visible"));
+} else {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.18,
+      rootMargin: "0px 0px -40px 0px"
+    }
+  );
+
+  revealElements.forEach((element) => revealObserver.observe(element));
+}
+
 const canvas = document.getElementById("hex-bg");
 
-if (canvas) {
+if (canvas && !prefersReducedMotion) {
   const ctx = canvas.getContext("2d");
-  let w, h, dpr;
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
   let hexes = [];
 
   function random(min, max) {
@@ -133,13 +107,13 @@ if (canvas) {
 
   function resizeCanvas() {
     dpr = window.devicePixelRatio || 1;
-    w = window.innerWidth;
-    h = window.innerHeight;
+    width = window.innerWidth;
+    height = window.innerHeight;
 
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-    canvas.style.width = `${w}px`;
-    canvas.style.height = `${h}px`;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     createHexes();
@@ -147,74 +121,98 @@ if (canvas) {
 
   function createHexes() {
     hexes = [];
-    const count = w < 768 ? 28 : 48; /* CHANGE: responsive density */
+    const count = width < 768 ? 24 : 44;
 
-    for (let i = 0; i < count; i++) {
+    for (let index = 0; index < count; index += 1) {
       hexes.push({
-        x: random(0, w),
-        y: random(-h, h),
-        size: random(w < 768 ? 16 : 22, w < 768 ? 38 : 68),
-        speed: random(0.25, 0.9),
-        drift: random(-0.12, 0.12),
+        x: random(0, width),
+        y: random(-height, height),
+        size: random(width < 768 ? 16 : 20, width < 768 ? 34 : 66),
+        speed: random(0.2, 0.75),
+        drift: random(-0.14, 0.14),
         rotation: random(0, Math.PI * 2),
-        rotationSpeed: random(-0.002, 0.002),
-        alpha: random(0.10, 0.30),
+        rotationSpeed: random(-0.0025, 0.0025),
+        alpha: random(0.09, 0.28),
         blur: random(8, 18)
       });
     }
   }
 
-  function drawHex(x, y, r, rotation, alpha, blur) {
+  function drawHex(x, y, radius, rotation, alpha, blur) {
     ctx.beginPath();
 
-    for (let i = 0; i < 6; i++) {
-      const angle = rotation + (Math.PI / 3) * i;
-      const px = x + r * Math.cos(angle);
-      const py = y + r * Math.sin(angle);
+    for (let side = 0; side < 6; side += 1) {
+      const angle = rotation + (Math.PI / 3) * side;
+      const px = x + radius * Math.cos(angle);
+      const py = y + radius * Math.sin(angle);
 
-      if (i === 0) ctx.moveTo(px, py);
-      else ctx.lineTo(px, py);
+      if (side === 0) {
+        ctx.moveTo(px, py);
+      } else {
+        ctx.lineTo(px, py);
+      }
     }
 
     ctx.closePath();
     ctx.shadowBlur = blur;
-    ctx.shadowColor = `rgba(35, 220, 255, ${alpha * 1.8})`;
-    ctx.strokeStyle = `rgba(35, 220, 255, ${alpha})`;
-    ctx.lineWidth = 1.4;
+    ctx.shadowColor = `rgba(98, 245, 208, ${alpha * 1.8})`;
+    ctx.strokeStyle = `rgba(81, 220, 255, ${alpha})`;
+    ctx.lineWidth = 1.2;
     ctx.stroke();
   }
 
   function animate() {
-    ctx.clearRect(0, 0, w, h);
+    ctx.clearRect(0, 0, width, height);
 
-    /* CHANGE: subtle dark blue moving glow wash */
-    const grad = ctx.createLinearGradient(0, 0, 0, h);
-    grad.addColorStop(0, "rgba(0, 190, 255, 0.015)");
-    grad.addColorStop(0.5, "rgba(0, 255, 200, 0.025)");
-    grad.addColorStop(1, "rgba(0, 120, 255, 0.015)");
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, w, h);
+    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+    gradient.addColorStop(0, "rgba(31, 212, 255, 0.016)");
+    gradient.addColorStop(0.5, "rgba(98, 245, 208, 0.024)");
+    gradient.addColorStop(1, "rgba(31, 212, 255, 0.014)");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
 
-    for (const hex of hexes) {
+    hexes.forEach((hex) => {
       drawHex(hex.x, hex.y, hex.size, hex.rotation, hex.alpha, hex.blur);
 
       hex.y += hex.speed;
       hex.x += hex.drift;
       hex.rotation += hex.rotationSpeed;
 
-      if (hex.y - hex.size > h) {
-        hex.y = -hex.size - random(20, 200);
-        hex.x = random(0, w);
+      if (hex.y - hex.size > height) {
+        hex.y = -hex.size - random(40, 180);
+        hex.x = random(0, width);
       }
 
-      if (hex.x < -100) hex.x = w + 100;
-      if (hex.x > w + 100) hex.x = -100;
-    }
+      if (hex.x < -100) {
+        hex.x = width + 100;
+      }
 
-    requestAnimationFrame(animate);
+      if (hex.x > width + 100) {
+        hex.x = -100;
+      }
+    });
+
+    window.requestAnimationFrame(animate);
   }
 
   window.addEventListener("resize", resizeCanvas);
   resizeCanvas();
   animate();
+} else if (canvas) {
+  const ctx = canvas.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  canvas.style.width = `${width}px`;
+  canvas.style.height = `${height}px`;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const gradient = ctx.createLinearGradient(0, 0, 0, height);
+  gradient.addColorStop(0, "rgba(31, 212, 255, 0.04)");
+  gradient.addColorStop(1, "rgba(98, 245, 208, 0.03)");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
 }
