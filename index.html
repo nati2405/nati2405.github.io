@@ -43,7 +43,6 @@
     <div class="hero-center">
         <p class="eyebrow">AI systems / full-stack engineering / research</p>
         <h1>Building <span class="highlight">intelligent systems</span>.</h1>
-        <h3>Software engineering, applied research, and product development.</h3>
 
         <p>
             Virginia Tech computer science student and CEO of C5 Active, focused on data-driven systems and full-stack development.
@@ -392,18 +391,48 @@
             <p>
                 I am open to internships, research, and engineering opportunities where I can contribute across AI, software, and product execution.
             </p>
-
-            <ul>
-                <li><a href="mailto:nathanbezabeh@gmail.com">Email: nathanbezabeh@gmail.com</a></li>
-                <li><a href="tel:5718663741">Phone: (571) 866-3741</a></li>
-                <li><a href="https://www.linkedin.com/in/nat25et21" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            </ul>
+            <div class="contact-actions">
+                <button type="button" class="ghost-btn contact-me-btn" data-open-contact>
+                    Contact Me
+                </button>
+                <a href="https://www.linkedin.com/in/nat25et21" class="ghost-btn contact-link-btn" target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                </a>
+            </div>
         </div>
     </div>
 </section>
 
+<div class="contact-modal" id="contact-modal" aria-hidden="true">
+    <div class="contact-modal-backdrop" data-close-contact></div>
+    <div class="contact-modal-panel" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+        <button type="button" class="contact-modal-close" aria-label="Close contact form" data-close-contact>
+            ×
+        </button>
+
+        <h3 id="contact-modal-title">Contact Me</h3>
+
+        <form action="https://formsubmit.co/nathanbezabeh@gmail.com" method="POST" class="contact-form">
+            <input type="hidden" name="_subject" value="New portfolio contact message">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" placeholder="Your name" required>
+
+            <label for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" placeholder="you@example.com" required>
+
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" placeholder="Tell me a little about what you want to build." required></textarea>
+
+            <button type="submit" class="resume-btn contact-submit-btn">Send Message</button>
+        </form>
+    </div>
+</div>
+
 <footer>
-    (c) 2025 Nathan Bezabeh - Built for momentum, clarity, and future-facing work.
+    (c) 2025 Nathan Bezabeh. All rights reserved.
 </footer>
 
 <script src="backend.js?v=2"></script>

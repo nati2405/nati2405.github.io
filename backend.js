@@ -68,6 +68,37 @@ if (toggleBtn && nav) {
 }
 
 const revealElements = document.querySelectorAll(".reveal, .reveal-card");
+const contactModal = document.getElementById("contact-modal");
+const openContactButton = document.querySelector("[data-open-contact]");
+const closeContactButtons = document.querySelectorAll("[data-close-contact]");
+
+function setContactModalState(isOpen) {
+  if (!contactModal) {
+    return;
+  }
+
+  contactModal.classList.toggle("is-open", isOpen);
+  contactModal.setAttribute("aria-hidden", String(!isOpen));
+  document.body.style.overflow = isOpen ? "hidden" : "";
+}
+
+if (openContactButton && contactModal) {
+  openContactButton.addEventListener("click", () => {
+    setContactModalState(true);
+  });
+
+  closeContactButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setContactModalState(false);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && contactModal.classList.contains("is-open")) {
+      setContactModalState(false);
+    }
+  });
+}
 
 if (prefersReducedMotion) {
   revealElements.forEach((element) => element.classList.add("visible"));
