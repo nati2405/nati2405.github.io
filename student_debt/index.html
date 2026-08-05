@@ -1,100 +1,200 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>SEIR Simulation Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An interactive SEIR-inspired model exploring how populations can move through stages of student debt.">
+    <title>Modeling Student Debt Dynamics | Nathan Bezabeh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+    <script src="seir.js" defer></script>
 </head>
 
 <body>
-<a href="../index.html" class="back-btn">← Back</a>
+    <a class="skip-link" href="#simulator">Skip to simulator</a>
 
-<h1>SEIR Model Interactive Demo</h1>
+    <header class="site-header">
+        <a class="brand" href="../index.html" aria-label="Return to Nathan Bezabeh's portfolio">
+            <span class="brand-mark" aria-hidden="true">NB</span>
+            <span>Portfolio</span>
+        </a>
+        <a class="back-link" href="../index.html#projects">
+            <span aria-hidden="true">&larr;</span> All projects
+        </a>
+    </header>
 
-<div class="project-detail-card">
-    <p class="proj-summary">
-        This demo visualizes the SEIR epidemiological model, showing how a
-        population moves between Susceptible, Exposed, Infected, and Recovered states.
-    </p>
-    <p class="proj-explain">
-        Adjust the parameters below to see how transmission, incubation,
-        and recovery rates affect outbreak timing and severity.
-    </p>
-</div>
+    <main>
+        <section class="hero" aria-labelledby="page-title">
+            <div class="hero-copy">
+                <p class="eyebrow">Computational research · Mathematical modeling</p>
+                <h1 id="page-title">Modeling the multi-stage dynamics of <span>student debt</span></h1>
+                <p class="hero-summary">
+                    An interactive implementation of an SEIR-inspired system that reframes debt as a progression through four population states—from financial vulnerability to repayment.
+                </p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#simulator">Run the model</a>
+                    <a class="button button-secondary" href="#method">Explore the method</a>
+                </div>
+            </div>
 
+            <aside class="role-card" aria-label="My contribution">
+                <p class="card-label">My contribution</p>
+                <h2>Interactive simulation development</h2>
+                <p>I translated our mathematical system into a browser-based model so audiences can test parameters and see the population dynamics immediately.</p>
+                <ul class="tag-list" aria-label="Technologies and methods">
+                    <li>JavaScript</li>
+                    <li>Chart.js</li>
+                    <li>ODE simulation</li>
+                    <li>Data visualization</li>
+                </ul>
+            </aside>
+        </section>
 
-<div class="controls">
-    <label>β (Transmission Rate)
-        <input type="number" id="beta" value="1" step="0.1">
-    </label>
+        <section class="state-section" aria-labelledby="states-title">
+            <div class="section-heading">
+                <p class="eyebrow">The model</p>
+                <h2 id="states-title">Four states, one evolving system</h2>
+                <p>The research adapts the structure of an epidemiological SEIR model to represent stages in a student borrower's financial journey.</p>
+            </div>
 
-    <label>σ (Incubation Rate)
-        <input type="number" id="sigma" value="1" step="0.1">
-    </label>
+            <div class="state-grid">
+                <article class="state-card state-s">
+                    <span class="state-symbol">S</span>
+                    <div><h3>Susceptible</h3><p>Students without the means to independently fund higher education.</p></div>
+                </article>
+                <article class="state-card state-e">
+                    <span class="state-symbol">E</span>
+                    <div><h3>Exposed</h3><p>Borrowers who have entered the student-loan system.</p></div>
+                </article>
+                <article class="state-card state-i">
+                    <span class="state-symbol">I</span>
+                    <div><h3>Excessive debt</h3><p>Borrowers experiencing a financially burdensome level of debt.</p></div>
+                </article>
+                <article class="state-card state-r">
+                    <span class="state-symbol">R</span>
+                    <div><h3>Recovered</h3><p>Borrowers who have completed repayment and exited the debt system.</p></div>
+                </article>
+            </div>
+        </section>
 
-    <label>γ (Recovery Rate)
-        <input type="number" id="gamma" value="0.1" step="0.05">
-    </label>
+        <section class="simulator-section" id="simulator" aria-labelledby="simulator-title">
+            <div class="section-heading simulator-heading">
+                <div>
+                    <p class="eyebrow">Interactive experiment</p>
+                    <h2 id="simulator-title">Test the one-stage model</h2>
+                    <p>Change a transition rate, run the simulation, and compare how the timing and scale of debt burden respond.</p>
+                </div>
+                <span class="model-badge">RK4 numerical solver</span>
+            </div>
 
-    <label>Days
-        <input type="number" id="days" value="60">
-    </label>
+            <div class="simulator-layout">
+                <form class="control-panel" id="simulation-form">
+                    <div class="panel-heading">
+                        <h3>Model parameters</h3>
+                        <button class="text-button" id="reset-button" type="button">Reset defaults</button>
+                    </div>
 
-    <button onclick="simulate()">Run Simulation</button>
-</div>
+                    <label class="control" for="beta">
+                        <span><strong>&beta; · Entry pressure</strong><output id="beta-output" for="beta">1.00</output></span>
+                        <input type="range" id="beta" name="beta" min="0.05" max="2" value="1" step="0.05">
+                        <small>Rate at which susceptible students enter exposure.</small>
+                    </label>
 
-<div class="results">
-    <p id="estimate"></p>
-</div>
+                    <label class="control" for="sigma">
+                        <span><strong>&sigma; · Debt progression</strong><output id="sigma-output" for="sigma">1.00</output></span>
+                        <input type="range" id="sigma" name="sigma" min="0.05" max="2" value="1" step="0.05">
+                        <small>Rate at which exposed borrowers move into excessive debt.</small>
+                    </label>
 
-<canvas id="seirChart"></canvas>
+                    <label class="control" for="gamma">
+                        <span><strong>&gamma; · Recovery</strong><output id="gamma-output" for="gamma">0.10</output></span>
+                        <input type="range" id="gamma" name="gamma" min="0.05" max="1" value="0.1" step="0.05">
+                        <small>Rate at which heavily indebted borrowers complete repayment.</small>
+                    </label>
 
-<script src="seir.js"></script>
+                    <label class="days-control" for="days">
+                        <span><strong>Simulation horizon</strong><small>1–365 time units</small></span>
+                        <input type="number" id="days" name="days" min="1" max="365" value="60" inputmode="numeric" required>
+                    </label>
 
-<script>
-let chart;
+                    <fieldset class="preset-group">
+                        <legend>Quick scenarios</legend>
+                        <div>
+                            <button type="button" class="preset is-active" data-preset="baseline">Baseline</button>
+                            <button type="button" class="preset" data-preset="pressure">Higher entry</button>
+                            <button type="button" class="preset" data-preset="recovery">Faster recovery</button>
+                        </div>
+                    </fieldset>
 
-function simulate() {
-    const beta = parseFloat(document.getElementById("beta").value);
-    const sigma = parseFloat(document.getElementById("sigma").value);
-    const gamma = parseFloat(document.getElementById("gamma").value);
-    const days = parseInt(document.getElementById("days").value);
+                    <p class="form-error" id="form-error" role="alert" hidden></p>
+                    <button class="button button-primary run-button" type="submit">Run simulation</button>
+                </form>
 
-    const data = runSEIR(beta, sigma, gamma, days);
+                <div class="results-panel">
+                    <div class="metrics" aria-live="polite" aria-atomic="true">
+                        <article><span>Peak at risk</span><strong id="peak-value">—</strong><small>Exposed + excessive debt</small></article>
+                        <article><span>Peak timing</span><strong id="peak-day">—</strong><small>Simulation time</small></article>
+                        <article><span>Recovered at end</span><strong id="recovered-value">—</strong><small>Population proportion</small></article>
+                    </div>
 
-    document.getElementById("estimate").innerHTML =
-        `Peak (Exposed + Infected): <b>${data.maxRisk.toFixed(3)}</b>
-         at day <b>${data.peakDay.toFixed(1)}</b>`;
+                    <div class="chart-card">
+                        <div class="chart-heading">
+                            <div><h3>Population trajectories</h3><p>Proportion of the modeled population over time</p></div>
+                            <span class="status" id="simulation-status">Baseline</span>
+                        </div>
+                        <div class="chart-wrap">
+                            <canvas id="seir-chart" role="img" aria-label="Line chart showing susceptible, exposed, excessive debt, and recovered population proportions over time"></canvas>
+                            <p class="chart-fallback" id="chart-fallback" hidden>The chart library could not load. Check your connection and refresh the page.</p>
+                        </div>
+                    </div>
 
-    if (chart) chart.destroy();
+                    <div class="insight" id="model-insight" aria-live="polite"></div>
+                </div>
+            </div>
+        </section>
 
-    chart = new Chart(document.getElementById("seirChart"), {
-        type: 'line',
-        data: {
-            labels: data.t,
-            datasets: [
-                { label: 'Susceptible', data: data.S_arr },
-                { label: 'Exposed', data: data.E_arr },
-                { label: 'Infected', data: data.I_arr },
-                { label: 'Recovered', data: data.R_arr }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { labels: { color: '#e6edf3' } }
-            },
-            scales: {
-                x: { title: { display: true, text: 'Days' } },
-                y: { title: { display: true, text: 'Population Proportion' } }
-            }
-        }
-    });
-}
-</script>
+        <section class="method-section" id="method" aria-labelledby="method-title">
+            <div class="section-heading">
+                <p class="eyebrow">Under the hood</p>
+                <h2 id="method-title">From equations to an explorable interface</h2>
+            </div>
 
+            <div class="method-grid">
+                <article class="equation-card">
+                    <p class="card-label">One-stage differential system</p>
+                    <div class="equations" aria-label="SEIR differential equations">
+                        <code>dS/dt = −βSI</code>
+                        <code>dE/dt = βSI − σE</code>
+                        <code>dI/dt = σE − γI</code>
+                        <code>dR/dt = γI</code>
+                    </div>
+                    <p>The implementation evaluates these coupled equations with a fourth-order Runge–Kutta solver while preserving a normalized population.</p>
+                </article>
+
+                <div class="process-list">
+                    <article><span>01</span><div><h3>Translate</h3><p>Convert the mathematical state transitions into testable JavaScript functions.</p></div></article>
+                    <article><span>02</span><div><h3>Simulate</h3><p>Advance the system in small time steps and capture every population trajectory.</p></div></article>
+                    <article><span>03</span><div><h3>Communicate</h3><p>Turn model output into an interactive chart and decision-friendly summary metrics.</p></div></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="context-section" aria-labelledby="context-title">
+            <div>
+                <p class="eyebrow">Research context</p>
+                <h2 id="context-title">A foundation for deeper analysis</h2>
+            </div>
+            <p>The broader research extends this one-stage demonstration into multi-stage exposure models, reproduction-number analysis, vital dynamics, parameter estimation, and potential work with real-world data.</p>
+            <aside><strong>Model boundary</strong><span>This is a conceptual population model for exploring system behavior. It is not an individual financial forecast or financial advice.</span></aside>
+        </section>
+    </main>
+
+    <footer>
+        <p>Designed and developed by Nathan Bezabeh</p>
+        <a href="../index.html#contact">Let's connect <span aria-hidden="true">&rarr;</span></a>
+    </footer>
 </body>
 </html>
